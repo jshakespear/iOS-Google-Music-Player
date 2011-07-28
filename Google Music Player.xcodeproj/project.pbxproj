@@ -1,0 +1,291 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C5F6D36513E221C8009AFA5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F6D36413E221C8009AFA5C /* UIKit.framework */; };
+		C5F6D36713E221C8009AFA5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F6D36613E221C8009AFA5C /* Foundation.framework */; };
+		C5F6D36913E221C8009AFA5C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F6D36813E221C8009AFA5C /* CoreGraphics.framework */; };
+		C5F6D36F13E221C8009AFA5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5F6D36D13E221C8009AFA5C /* InfoPlist.strings */; };
+		C5F6D37113E221C8009AFA5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F6D37013E221C8009AFA5C /* main.m */; };
+		C5F6D37513E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F6D37413E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m */; };
+		C5F6D37813E221C8009AFA5C /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F6D37613E221C8009AFA5C /* MainWindow.xib */; };
+		C5F6D37B13E221C8009AFA5C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F6D37A13E221C8009AFA5C /* RootViewController.m */; };
+		C5F6D37E13E221C9009AFA5C /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F6D37C13E221C9009AFA5C /* RootViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C5F6D36013E221C8009AFA5C /* Google Music Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Google Music Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5F6D36413E221C8009AFA5C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C5F6D36613E221C8009AFA5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C5F6D36813E221C8009AFA5C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C5F6D36C13E221C8009AFA5C /* Google Music Player-Info.plist */ = {isa = PBXFileReference; path = "Google Music Player-Info.plist"; sourceTree = "<group>"; };
+		C5F6D36E13E221C8009AFA5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C5F6D37013E221C8009AFA5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C5F6D37213E221C8009AFA5C /* Google Music Player-Prefix.pch */ = {isa = PBXFileReference; path = "Google Music Player-Prefix.pch"; sourceTree = "<group>"; };
+		C5F6D37313E221C8009AFA5C /* Google_Music_PlayerAppDelegate.h */ = {isa = PBXFileReference; path = Google_Music_PlayerAppDelegate.h; sourceTree = "<group>"; };
+		C5F6D37413E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Google_Music_PlayerAppDelegate.m; sourceTree = "<group>"; };
+		C5F6D37713E221C8009AFA5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		C5F6D37913E221C8009AFA5C /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		C5F6D37A13E221C8009AFA5C /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		C5F6D37D13E221C9009AFA5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C5F6D35D13E221C8009AFA5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5F6D36513E221C8009AFA5C /* UIKit.framework in Frameworks */,
+				C5F6D36713E221C8009AFA5C /* Foundation.framework in Frameworks */,
+				C5F6D36913E221C8009AFA5C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C5F6D35513E221C8009AFA5C = {
+			isa = PBXGroup;
+			children = (
+				C5F6D36A13E221C8009AFA5C /* Google Music Player */,
+				C5F6D36313E221C8009AFA5C /* Frameworks */,
+				C5F6D36113E221C8009AFA5C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C5F6D36113E221C8009AFA5C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C5F6D36013E221C8009AFA5C /* Google Music Player.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C5F6D36313E221C8009AFA5C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C5F6D36413E221C8009AFA5C /* UIKit.framework */,
+				C5F6D36613E221C8009AFA5C /* Foundation.framework */,
+				C5F6D36813E221C8009AFA5C /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C5F6D36A13E221C8009AFA5C /* Google Music Player */ = {
+			isa = PBXGroup;
+			children = (
+				C5F6D37313E221C8009AFA5C /* Google_Music_PlayerAppDelegate.h */,
+				C5F6D37413E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m */,
+				C5F6D37613E221C8009AFA5C /* MainWindow.xib */,
+				C5F6D37913E221C8009AFA5C /* RootViewController.h */,
+				C5F6D37A13E221C8009AFA5C /* RootViewController.m */,
+				C5F6D37C13E221C9009AFA5C /* RootViewController.xib */,
+				C5F6D36B13E221C8009AFA5C /* Supporting Files */,
+			);
+			path = "Google Music Player";
+			sourceTree = "<group>";
+		};
+		C5F6D36B13E221C8009AFA5C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C5F6D36C13E221C8009AFA5C /* Google Music Player-Info.plist */,
+				C5F6D36D13E221C8009AFA5C /* InfoPlist.strings */,
+				C5F6D37013E221C8009AFA5C /* main.m */,
+				C5F6D37213E221C8009AFA5C /* Google Music Player-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C5F6D35F13E221C8009AFA5C /* Google Music Player */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5F6D38113E221C9009AFA5C /* Build configuration list for PBXNativeTarget "Google Music Player" */;
+			buildPhases = (
+				C5F6D35C13E221C8009AFA5C /* Sources */,
+				C5F6D35D13E221C8009AFA5C /* Frameworks */,
+				C5F6D35E13E221C8009AFA5C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Google Music Player";
+			productName = "Google Music Player";
+			productReference = C5F6D36013E221C8009AFA5C /* Google Music Player.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C5F6D35713E221C8009AFA5C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "DiDev Studios";
+			};
+			buildConfigurationList = C5F6D35A13E221C8009AFA5C /* Build configuration list for PBXProject "Google Music Player" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C5F6D35513E221C8009AFA5C;
+			productRefGroup = C5F6D36113E221C8009AFA5C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C5F6D35F13E221C8009AFA5C /* Google Music Player */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C5F6D35E13E221C8009AFA5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5F6D36F13E221C8009AFA5C /* InfoPlist.strings in Resources */,
+				C5F6D37813E221C8009AFA5C /* MainWindow.xib in Resources */,
+				C5F6D37E13E221C9009AFA5C /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C5F6D35C13E221C8009AFA5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5F6D37113E221C8009AFA5C /* main.m in Sources */,
+				C5F6D37513E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m in Sources */,
+				C5F6D37B13E221C8009AFA5C /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C5F6D36D13E221C8009AFA5C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5F6D36E13E221C8009AFA5C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C5F6D37613E221C8009AFA5C /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5F6D37713E221C8009AFA5C /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		C5F6D37C13E221C9009AFA5C /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5F6D37D13E221C9009AFA5C /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C5F6D37F13E221C9009AFA5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C5F6D38013E221C9009AFA5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C5F6D38213E221C9009AFA5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Google Music Player/Google Music Player-Prefix.pch";
+				INFOPLIST_FILE = "Google Music Player/Google Music Player-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C5F6D38313E221C9009AFA5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Google Music Player/Google Music Player-Prefix.pch";
+				INFOPLIST_FILE = "Google Music Player/Google Music Player-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C5F6D35A13E221C8009AFA5C /* Build configuration list for PBXProject "Google Music Player" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5F6D37F13E221C9009AFA5C /* Debug */,
+				C5F6D38013E221C9009AFA5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C5F6D38113E221C9009AFA5C /* Build configuration list for PBXNativeTarget "Google Music Player" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5F6D38213E221C9009AFA5C /* Debug */,
+				C5F6D38313E221C9009AFA5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C5F6D35713E221C8009AFA5C /* Project object */;
+}

@@ -1,0 +1,6 @@
+iOS Google Music Player
+Copyright © 2011 Julius Parishy
+
+About The Project
+-----------------
+This is an iPhone client for Google Music. Unfortunately, Google does not supply a native client for iOS, and the desktop web client relies on Flash (or HTML5, in some cases, I believe, but I couldn't get it to play on my iPhone). That's where I came in. I used Wireshark (which TOTALLY sucks on Mac OS X! Next time I'm using Windows!) to figure out the communication between my computer (the web desktop client) and Google Music's servers. That is, after hours of barking up the wrong tree and trying to see if I could find the information I need inside the Flash music player that comes with the desktop client. Anyway, once I figured out the protocol between the two (turns out it was mostly HTTP commands that returned JSON with information about the songs and URLs for the actual streams.

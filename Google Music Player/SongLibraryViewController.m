@@ -19,12 +19,24 @@
     return self;
 }
 
+-(void)dealloc
+{
+    [gmManager release];
+    
+    [super dealloc];
+}
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+-(void)songsListedSuccessfully
+{
+    [self.tableView reloadData];
 }
 
 #pragma mark - View lifecycle
@@ -38,6 +50,13 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.title = @"Songs";
+    
+    gmManager = [[GMManager alloc] init];
+    gmManager.delegate = self;
+    
+    [gmManager downloadLibrary];
 }
 
 - (void)viewDidUnload
@@ -77,16 +96,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [[gmManager songs] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,10 +112,15 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
+    
+    GMSong* song = [[gmManager songs] objectAtIndex:indexPath.row];
+    
+    [cell.textLabel setText:song.title];
+    [cell.detailTextLabel setText:song.artist];
     
     return cell;
 }
@@ -154,6 +176,12 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    GMSong* song = [[gmManager songs] objectAtIndex:indexPath.row];
+    
+    [gmManager playSong:song];
 }
 
 @end

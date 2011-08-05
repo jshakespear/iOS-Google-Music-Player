@@ -10,6 +10,11 @@
 
 @implementation GMAlbum
 
+@synthesize artist;
+@synthesize title;
+
+@synthesize songs;
+
 - (id)init
 {
     self = [super init];

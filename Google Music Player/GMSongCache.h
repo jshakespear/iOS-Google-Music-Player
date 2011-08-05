@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GMSongCache : NSObject
+#import "GMSong.h"
+#import "GMArtist.h"
+#import "GMAlbum.h"
+
+@interface GMSongCache : NSObject {
+    NSArray* songs;
+    NSArray* albums;
+    NSArray* artists;
+}
+
+@property (nonatomic, retain) NSArray* songs;
+@property (nonatomic, retain) NSArray* artists;
+@property (nonatomic, retain) NSArray* albums;
+
+-(void)synchronize;
 
 @end

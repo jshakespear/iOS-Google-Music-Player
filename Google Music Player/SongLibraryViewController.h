@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SongLibraryViewController : UITableViewController
+#import "GMManager.h"
+
+@interface SongLibraryViewController : UITableViewController<GMManagerDelegate> {
+    GMManager* gmManager;
+}
 
 @end

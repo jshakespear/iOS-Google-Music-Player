@@ -8,10 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Google_Music_PlayerAppDelegate : NSObject <UIApplicationDelegate>
+#import "GMManager.h"
+
+#import "GMSongCache.h"
+#import "GMAudioPlayer.h"
+#import "GMPlaylistManager.h"
+
+@interface Google_Music_PlayerAppDelegate : NSObject <UIApplicationDelegate, UITabBarDelegate> {
+    GMManager* googleMusicManager;
+    
+    GMSongCache* songCache;
+    GMAudioPlayer* audioPlayer;
+    GMPlaylistManager* playlistManager;
+}
+
+@property (nonatomic, readonly) GMManager* googleMusicManager;
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
 @end

@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SongsViewController : UITableViewController
+#import "GMSongCache.h"
+#import "GMSongCacheViewController.h"
+#import "GMAudioPlayer.h"
+
+@interface SongsViewController : UITableViewController<GMSongCacheViewController> {
+    GMSongCache* songCache;
+    GMAudioPlayer* audioPlayer;
+    GMPlaylistManager* playlistManager;
+}
+
+-(void)syncSongCache;
 
 @end

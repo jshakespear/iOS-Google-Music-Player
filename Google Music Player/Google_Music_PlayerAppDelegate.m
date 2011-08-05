@@ -8,16 +8,60 @@
 
 #import "Google_Music_PlayerAppDelegate.h"
 
+#import "GMSongCacheViewController.h"
+
 @implementation Google_Music_PlayerAppDelegate
 
+@synthesize googleMusicManager;
+
 @synthesize window = _window;
-@synthesize navigationController = _navigationController;
+@synthesize tabBarController = _tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //googleMusicManager = [[GMManager alloc] init];
+    
+    songCache = [[GMSongCache alloc] init];
+    
+    audioPlayer = [[GMAudioPlayer alloc] init];
+    
+    playlistManager = [[GMPlaylistManager alloc] init];
+    playlistManager.audioPlayer = audioPlayer;
+    
+    for(UIViewController* viewController in self.tabBarController.viewControllers)
+    {
+        UIViewController* realViewController = viewController;
+        
+        if([viewController isKindOfClass:[UINavigationController class]])
+        {
+            UINavigationController* navController = (UINavigationController*)viewController;
+            realViewController = [navController visibleViewController];
+        }
+        
+        if([realViewController conformsToProtocol:@protocol(GMSongCacheViewController)])
+        {
+            if([realViewController respondsToSelector:@selector(setSongCache:)])
+            {
+                [realViewController performSelector:@selector(setSongCache:) withObject:songCache];
+            }
+            
+            if([realViewController respondsToSelector:@selector(setAudioPlayer:)])
+            {
+                [realViewController performSelector:@selector(setAudioPlayer:) withObject:audioPlayer];
+            }
+            
+            if([realViewController respondsToSelector:@selector(setPlaylistManager:)])
+            {
+                [realViewController performSelector:@selector(setPlaylistManager:) withObject:playlistManager];
+            }
+        }
+    }
+
+    [songCache synchronize];
+    
     // Override point for customization after application launch.
     // Add the navigation controller's view to the window and display.
-    self.window.rootViewController = self.navigationController;
+    self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -61,10 +105,45 @@
      */
 }
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    UIViewController* realViewController = viewController;
+    
+    if([viewController isKindOfClass:[UINavigationController class]])
+    {
+        UINavigationController* navController = (UINavigationController*)viewController;
+        realViewController = [navController visibleViewController];
+    }
+    
+    if([realViewController conformsToProtocol:@protocol(GMSongCacheViewController)])
+    {
+        if([realViewController respondsToSelector:@selector(setSongCache:)])
+        {
+            [realViewController performSelector:@selector(setSongCache:) withObject:songCache];
+        }
+        
+        if([realViewController respondsToSelector:@selector(setAudioPlayer:)])
+        {
+            [realViewController performSelector:@selector(setAudioPlayer:) withObject:audioPlayer];
+        }
+        
+        if([realViewController respondsToSelector:@selector(setPlaylistManager:)])
+        {
+            [realViewController performSelector:@selector(setPlaylistManager:) withObject:playlistManager];
+        }
+    }
+}
+
 - (void)dealloc
 {
+    [songCache release];
+    [audioPlayer release];
+    [playlistManager release];
+    
+    [googleMusicManager release];
+    
     [_window release];
-    [_navigationController release];
+    [_tabBarController release];
     [super dealloc];
 }
 

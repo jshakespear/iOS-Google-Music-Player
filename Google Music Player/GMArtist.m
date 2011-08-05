@@ -10,6 +10,11 @@
 
 @implementation GMArtist
 
+@synthesize name;
+
+@synthesize albums;
+@synthesize songs;
+
 - (id)init
 {
     self = [super init];

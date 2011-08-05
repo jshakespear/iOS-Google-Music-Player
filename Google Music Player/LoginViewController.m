@@ -10,6 +10,14 @@
 
 @implementation LoginViewController
 
+@synthesize usernameCell;
+@synthesize passwordCell;
+
+@synthesize loginButtonCell;
+
+@synthesize usernameField;
+@synthesize passwordField;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -19,6 +27,13 @@
     return self;
 }
 
+-(void)dealloc
+{
+    [webView release];
+    
+    [super dealloc];
+}
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -26,6 +41,181 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+
+-(IBAction)loginButtonPressed:(id)sender
+{
+    [self sendGoogleLoginRequest];
+  
+    
+   // [webView 
+    
+  //  NSString* string = [webView stringByEvaluatingJavaScriptFromString:@"document.elements[\'Email\'].value = \'Test\'"];
+    
+   // [self.view addSubview:webView];
+    
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+}
+
+-(void)sendGoogleLoginRequest
+{
+    NSString* username = self.usernameField.text;
+    NSString* password = self.passwordField.text;
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://www.google.com/accounts/ServiceLoginAuth"]];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+
+    NSString* galx = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByName('GALX').item(0).value"];
+    NSLog(@"%@", galx);
+    
+    NSString* body = [[NSString alloc] initWithFormat:@"Email=%@&Passwd=%@&GALX=%@&continue=http://music.google.com/",username, password, galx];
+    [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    [body release];
+    
+    [responseData release];
+    responseData = [[NSMutableData alloc] init];
+    
+    clientLoginConnection = [NSURLConnection connectionWithRequest:request delegate:self];
+    
+    if(!clientLoginConnection)
+    {
+        NSLog(@"Failed to create sign in connection.");
+    }
+    
+    loginSuccessful = NO;
+}
+
+-(void)saveCookies
+{
+    NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
+    
+    NSArray* cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+    for(NSHTTPCookie* cookie in cookies)
+    {
+        NSLog(@"Saved cookie %@", cookie.name);
+        [dictionary setValue:cookie.value forKey:cookie.name];
+    }
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:dictionary forKey:@"GMCookies"];
+    [defaults synchronize];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    NSLog(@"Status: %i", httpResponse.statusCode);
+    
+    if(connection == clientLoginConnection)
+    {
+    }
+    else if(connection == musicTestConnection)
+    {
+        NSDictionary* headers = [httpResponse allHeaderFields];
+        NSString* cookies = [headers objectForKey:@"Set-Cookie"];
+        
+        NSLog(@"Cookies: %@", cookies);
+        
+        if([cookies rangeOfString:@"xt"].location != NSNotFound)
+        {
+            loginSuccessful = YES;
+            
+            NSURL* url = [NSURL URLWithString:@"music.google.com"];
+            NSArray* cookiesToSet = [NSHTTPCookie cookiesWithResponseHeaderFields:headers forURL:url];
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:cookiesToSet forURL:url mainDocumentURL:nil];
+        }
+        else
+        {
+            loginSuccessful = NO;
+        }
+    }
+
+   /* NSLog(@"Got response: %@ (%lld bytes expected)", [response MIMEType], [response expectedContentLength]); */
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [responseData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    
+    NSString* response = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+   // NSLog(@"Response:\n%@\n", response);
+    [response release];
+
+    if(connection == clientLoginConnection)
+    {
+       // if(loginSuccessful)
+       // {
+            musicTestConnection = [NSURLConnection connectionWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://music.google.com/music/listen"]] delegate:self];
+            
+            [responseData release];
+            responseData = [[NSMutableData alloc] init];
+      /*  }
+        else
+        {
+            NSLog(@"Response:\n%@\n", response);
+            
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to login to Google Music" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        } */
+    }
+    else if(connection == musicTestConnection)
+    {
+    
+        if(loginSuccessful)
+        {
+            NSString* response = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+            //NSLog(@"Music Response:\n%@\n", response);
+            [response release];
+            
+            [self saveCookies];
+        }
+        else
+        {
+           // NSLog(@"Response:\n%@\n", response);
+            
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to login to Google Music" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        } 
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"Connection failed. Reason: %@", [error localizedDescription]);
+    
+    NSDictionary* info = [error userInfo];
+    for(id value in [info allValues])
+    {
+        NSLog(@"Error Info: %@", value);
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if(textField == self.usernameField)
+    {
+        [self.passwordField becomeFirstResponder];
+    }
+    else
+    {
+        [textField resignFirstResponder];
+    }
+    
+    return NO;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+}
+
 
 #pragma mark - View lifecycle
 
@@ -38,6 +228,14 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self.usernameField becomeFirstResponder];
+    
+    webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    [webView setDelegate:self];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.google.com/accounts/ServiceLogin?service=sj"]]];
+    
+    loginSuccessful = NO;
 }
 
 - (void)viewDidUnload
@@ -45,6 +243,14 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.usernameCell = nil;
+    self.passwordCell = nil;
+    
+    self.loginButtonCell = nil;
+    
+    self.usernameField = nil;
+    self.passwordField = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -77,28 +283,38 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    if(section == 0)
+        return 2;
+    
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell* cell = nil;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    if(indexPath.section == 0)
+    {
+        if(indexPath.row == 0)
+        {
+            cell = self.usernameCell;
+        }
+        else
+        {
+            cell = self.passwordCell;
+        }
     }
-    
-    // Configure the cell...
+    else
+    {
+        cell = self.loginButtonCell;
+    }
     
     return cell;
 }
@@ -143,6 +359,11 @@
 */
 
 #pragma mark - Table view delegate
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

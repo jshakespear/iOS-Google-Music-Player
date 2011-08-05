@@ -10,6 +10,15 @@
 
 @implementation GMSong
 
+@synthesize googleMusicId;
+
+@synthesize title;
+@synthesize artist;
+@synthesize album;
+@synthesize genre;
+
+@synthesize coverArtURLString;
+
 - (id)init
 {
     self = [super init];

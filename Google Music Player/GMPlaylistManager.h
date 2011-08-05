@@ -8,6 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GMPlaylistManager : NSObject
+#import "GMSong.h"
+#import "GMAudioPlayer.h"
+
+@interface GMPlaylistManager : NSObject {
+    GMAudioPlayer* audioPlayer;
+    
+    NSMutableArray* songs;
+    
+    NSMutableData* currentResponse;
+}
+
+@property (nonatomic, assign) GMAudioPlayer* audioPlayer;
+@property (nonatomic, retain) NSMutableArray* songs;
+
+-(void)playSong:(GMSong*)song;
+
+-(void)downloadStreamInfoForSong:(GMSong*)song;
+-(void)parseStreamInfo:(NSString*)streamInfo;
+
+-(void)openStreamAtURL:(NSURL*)url;
 
 @end

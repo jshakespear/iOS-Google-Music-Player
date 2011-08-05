@@ -7,6 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5145FE513E28FA900C19FFC /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5145FE313E28FA900C19FFC /* SongsViewController.m */; };
+		C5145FE613E28FA900C19FFC /* SongsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5145FE413E28FA900C19FFC /* SongsViewController.xib */; };
+		C5145FEB13E28FB600C19FFC /* ArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5145FE913E28FB600C19FFC /* ArtistsViewController.m */; };
+		C5145FEC13E28FB600C19FFC /* ArtistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5145FEA13E28FB600C19FFC /* ArtistsViewController.xib */; };
+		C5145FF013E28FC400C19FFC /* AlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5145FEE13E28FC400C19FFC /* AlbumsViewController.m */; };
+		C5145FF113E28FC400C19FFC /* AlbumsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5145FEF13E28FC400C19FFC /* AlbumsViewController.xib */; };
+		C5145FF513E2FB5D00C19FFC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5145FF313E2FB5A00C19FFC /* LoginViewController.m */; };
+		C5145FF613E2FB5D00C19FFC /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5145FF413E2FB5B00C19FFC /* LoginViewController.xib */; };
+		C5145FFE13E2FDDA00C19FFC /* loginButton-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = C5145FFB13E2FDDA00C19FFC /* loginButton-disabled.png */; };
+		C5145FFF13E2FDDA00C19FFC /* loginButton-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = C5145FFC13E2FDDA00C19FFC /* loginButton-highlighted.png */; };
+		C514600013E2FDDA00C19FFC /* loginButton-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = C5145FFD13E2FDDA00C19FFC /* loginButton-normal.png */; };
+		C578ECE113E2309600622BD0 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ECC913E2309600622BD0 /* NSObject+SBJson.m */; };
+		C578ECE213E2309600622BD0 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ECCC13E2309600622BD0 /* SBJsonParser.m */; };
+		C578ECE313E2309600622BD0 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ECCE13E2309600622BD0 /* SBJsonStreamParser.m */; };
+		C578ECE413E2309600622BD0 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ECD013E2309600622BD0 /* SBJsonStreamParserAccumulator.m */; };
+		C578ECE513E2309600622BD0 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ECD213E2309600622BD0 /* SBJsonStreamParserAdapter.m */; };
+		C578ECE613E2309600622BD0 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ECD413E2309600622BD0 /* SBJsonStreamParserState.m */; };
+		C578ECE713E2309600622BD0 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ECD613E2309600622BD0 /* SBJsonStreamWriter.m */; };
+		C578ECE813E2309600622BD0 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ECD813E2309600622BD0 /* SBJsonStreamWriterAccumulator.m */; };
+		C578ECE913E2309600622BD0 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ECDA13E2309600622BD0 /* SBJsonStreamWriterState.m */; };
+		C578ECEA13E2309600622BD0 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ECDC13E2309600622BD0 /* SBJsonTokeniser.m */; };
+		C578ECEB13E2309600622BD0 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ECDE13E2309600622BD0 /* SBJsonUTF8Stream.m */; };
+		C578ECEC13E2309600622BD0 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ECE013E2309600622BD0 /* SBJsonWriter.m */; };
+		C578ECFD13E2427500622BD0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C578ECFB13E2427500622BD0 /* AudioToolbox.framework */; };
+		C578ECFE13E2427500622BD0 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C578ECFC13E2427500622BD0 /* CoreAudio.framework */; };
+		C578ED0113E2429D00622BD0 /* GMAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ED0013E2429D00622BD0 /* GMAudioPlayer.m */; };
+		C578ED0313E2498500622BD0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C578ED0213E2498500622BD0 /* AVFoundation.framework */; };
+		C578ED0613E2845600622BD0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ED0513E2845600622BD0 /* AudioStreamer.m */; };
+		C578ED0A13E285A500622BD0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C578ED0913E285A500622BD0 /* CFNetwork.framework */; };
+		C578ED0D13E2873700622BD0 /* GMSong.m in Sources */ = {isa = PBXBuildFile; fileRef = C578ED0C13E2873700622BD0 /* GMSong.m */; };
 		C5F6D36513E221C8009AFA5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F6D36413E221C8009AFA5C /* UIKit.framework */; };
 		C5F6D36713E221C8009AFA5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F6D36613E221C8009AFA5C /* Foundation.framework */; };
 		C5F6D36913E221C8009AFA5C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F6D36813E221C8009AFA5C /* CoreGraphics.framework */; };
@@ -16,23 +46,99 @@
 		C5F6D37813E221C8009AFA5C /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F6D37613E221C8009AFA5C /* MainWindow.xib */; };
 		C5F6D37B13E221C8009AFA5C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F6D37A13E221C8009AFA5C /* RootViewController.m */; };
 		C5F6D37E13E221C9009AFA5C /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F6D37C13E221C9009AFA5C /* RootViewController.xib */; };
+		C5F6D38C13E223E3009AFA5C /* SongLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F6D38A13E223E3009AFA5C /* SongLibraryViewController.m */; };
+		C5F6D38D13E223E3009AFA5C /* SongLibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F6D38B13E223E3009AFA5C /* SongLibraryViewController.xib */; };
+		C5F6D39013E22408009AFA5C /* GMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F6D38F13E22407009AFA5C /* GMManager.m */; };
+		C5FB109C13E48B68008996B0 /* GMSongCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB109B13E48B68008996B0 /* GMSongCache.m */; };
+		C5FB109F13E48F04008996B0 /* GMServerSync.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB109E13E48F04008996B0 /* GMServerSync.m */; };
+		C5FB10A213E490F3008996B0 /* GMPlaylistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB10A113E490F3008996B0 /* GMPlaylistManager.m */; };
+		C5FB10C113E7A2CB008996B0 /* GMAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB10C013E7A2CA008996B0 /* GMAlbum.m */; };
+		C5FB10C513E7A305008996B0 /* GMArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB10C413E7A304008996B0 /* GMArtist.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C5145FE213E28FA900C19FFC /* SongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsViewController.h; sourceTree = "<group>"; };
+		C5145FE313E28FA900C19FFC /* SongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsViewController.m; sourceTree = "<group>"; };
+		C5145FE413E28FA900C19FFC /* SongsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongsViewController.xib; sourceTree = "<group>"; };
+		C5145FE813E28FB600C19FFC /* ArtistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistsViewController.h; sourceTree = "<group>"; };
+		C5145FE913E28FB600C19FFC /* ArtistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistsViewController.m; sourceTree = "<group>"; };
+		C5145FEA13E28FB600C19FFC /* ArtistsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtistsViewController.xib; sourceTree = "<group>"; };
+		C5145FED13E28FC400C19FFC /* AlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumsViewController.h; sourceTree = "<group>"; };
+		C5145FEE13E28FC400C19FFC /* AlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumsViewController.m; sourceTree = "<group>"; };
+		C5145FEF13E28FC400C19FFC /* AlbumsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumsViewController.xib; sourceTree = "<group>"; };
+		C5145FF213E2FB5A00C19FFC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C5145FF313E2FB5A00C19FFC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C5145FF413E2FB5B00C19FFC /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		C5145FFB13E2FDDA00C19FFC /* loginButton-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginButton-disabled.png"; sourceTree = "<group>"; };
+		C5145FFC13E2FDDA00C19FFC /* loginButton-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginButton-highlighted.png"; sourceTree = "<group>"; };
+		C5145FFD13E2FDDA00C19FFC /* loginButton-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginButton-normal.png"; sourceTree = "<group>"; };
+		C578ECC713E2309600622BD0 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		C578ECC813E2309600622BD0 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		C578ECC913E2309600622BD0 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		C578ECCA13E2309600622BD0 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		C578ECCB13E2309600622BD0 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		C578ECCC13E2309600622BD0 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		C578ECCD13E2309600622BD0 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		C578ECCE13E2309600622BD0 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		C578ECCF13E2309600622BD0 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		C578ECD013E2309600622BD0 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		C578ECD113E2309600622BD0 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		C578ECD213E2309600622BD0 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		C578ECD313E2309600622BD0 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		C578ECD413E2309600622BD0 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		C578ECD513E2309600622BD0 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		C578ECD613E2309600622BD0 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		C578ECD713E2309600622BD0 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		C578ECD813E2309600622BD0 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		C578ECD913E2309600622BD0 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		C578ECDA13E2309600622BD0 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		C578ECDB13E2309600622BD0 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		C578ECDC13E2309600622BD0 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		C578ECDD13E2309600622BD0 /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		C578ECDE13E2309600622BD0 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		C578ECDF13E2309600622BD0 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		C578ECE013E2309600622BD0 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		C578ECFB13E2427500622BD0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C578ECFC13E2427500622BD0 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		C578ECFF13E2429D00622BD0 /* GMAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMAudioPlayer.h; sourceTree = "<group>"; };
+		C578ED0013E2429D00622BD0 /* GMAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAudioPlayer.m; sourceTree = "<group>"; };
+		C578ED0213E2498500622BD0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C578ED0413E2845500622BD0 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		C578ED0513E2845600622BD0 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		C578ED0713E2858A00622BD0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		C578ED0913E285A500622BD0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C578ED0B13E2873700622BD0 /* GMSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSong.h; sourceTree = "<group>"; };
+		C578ED0C13E2873700622BD0 /* GMSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSong.m; sourceTree = "<group>"; };
 		C5F6D36013E221C8009AFA5C /* Google Music Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Google Music Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5F6D36413E221C8009AFA5C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C5F6D36613E221C8009AFA5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C5F6D36813E221C8009AFA5C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C5F6D36C13E221C8009AFA5C /* Google Music Player-Info.plist */ = {isa = PBXFileReference; path = "Google Music Player-Info.plist"; sourceTree = "<group>"; };
+		C5F6D36C13E221C8009AFA5C /* Google Music Player-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Google Music Player-Info.plist"; sourceTree = "<group>"; };
 		C5F6D36E13E221C8009AFA5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C5F6D37013E221C8009AFA5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C5F6D37213E221C8009AFA5C /* Google Music Player-Prefix.pch */ = {isa = PBXFileReference; path = "Google Music Player-Prefix.pch"; sourceTree = "<group>"; };
-		C5F6D37313E221C8009AFA5C /* Google_Music_PlayerAppDelegate.h */ = {isa = PBXFileReference; path = Google_Music_PlayerAppDelegate.h; sourceTree = "<group>"; };
+		C5F6D37213E221C8009AFA5C /* Google Music Player-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Google Music Player-Prefix.pch"; sourceTree = "<group>"; };
+		C5F6D37313E221C8009AFA5C /* Google_Music_PlayerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Google_Music_PlayerAppDelegate.h; sourceTree = "<group>"; };
 		C5F6D37413E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Google_Music_PlayerAppDelegate.m; sourceTree = "<group>"; };
 		C5F6D37713E221C8009AFA5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		C5F6D37913E221C8009AFA5C /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		C5F6D37913E221C8009AFA5C /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		C5F6D37A13E221C8009AFA5C /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		C5F6D37D13E221C9009AFA5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		C5F6D38913E223E3009AFA5C /* SongLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongLibraryViewController.h; sourceTree = "<group>"; };
+		C5F6D38A13E223E3009AFA5C /* SongLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongLibraryViewController.m; sourceTree = "<group>"; };
+		C5F6D38B13E223E3009AFA5C /* SongLibraryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongLibraryViewController.xib; sourceTree = "<group>"; };
+		C5F6D38E13E22407009AFA5C /* GMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMManager.h; sourceTree = "<group>"; };
+		C5F6D38F13E22407009AFA5C /* GMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMManager.m; sourceTree = "<group>"; };
+		C5FB109813E48ABA008996B0 /* GMSongCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSongCacheViewController.h; sourceTree = "<group>"; };
+		C5FB109A13E48B68008996B0 /* GMSongCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSongCache.h; sourceTree = "<group>"; };
+		C5FB109B13E48B68008996B0 /* GMSongCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSongCache.m; sourceTree = "<group>"; };
+		C5FB109D13E48F04008996B0 /* GMServerSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMServerSync.h; sourceTree = "<group>"; };
+		C5FB109E13E48F04008996B0 /* GMServerSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMServerSync.m; sourceTree = "<group>"; };
+		C5FB10A013E490F3008996B0 /* GMPlaylistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPlaylistManager.h; sourceTree = "<group>"; };
+		C5FB10A113E490F3008996B0 /* GMPlaylistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPlaylistManager.m; sourceTree = "<group>"; };
+		C5FB10BF13E7A2C9008996B0 /* GMAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMAlbum.h; sourceTree = "<group>"; };
+		C5FB10C013E7A2CA008996B0 /* GMAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAlbum.m; sourceTree = "<group>"; };
+		C5FB10C313E7A304008996B0 /* GMArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMArtist.h; sourceTree = "<group>"; };
+		C5FB10C413E7A304008996B0 /* GMArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMArtist.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +146,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C578ED0A13E285A500622BD0 /* CFNetwork.framework in Frameworks */,
+				C578ED0313E2498500622BD0 /* AVFoundation.framework in Frameworks */,
+				C578ECFD13E2427500622BD0 /* AudioToolbox.framework in Frameworks */,
+				C578ECFE13E2427500622BD0 /* CoreAudio.framework in Frameworks */,
 				C5F6D36513E221C8009AFA5C /* UIKit.framework in Frameworks */,
 				C5F6D36713E221C8009AFA5C /* Foundation.framework in Frameworks */,
 				C5F6D36913E221C8009AFA5C /* CoreGraphics.framework in Frameworks */,
@@ -49,9 +159,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C578ECC613E2309600622BD0 /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
+				C578ECC713E2309600622BD0 /* JSON.h */,
+				C578ECC813E2309600622BD0 /* NSObject+SBJson.h */,
+				C578ECC913E2309600622BD0 /* NSObject+SBJson.m */,
+				C578ECCA13E2309600622BD0 /* SBJson.h */,
+				C578ECCB13E2309600622BD0 /* SBJsonParser.h */,
+				C578ECCC13E2309600622BD0 /* SBJsonParser.m */,
+				C578ECCD13E2309600622BD0 /* SBJsonStreamParser.h */,
+				C578ECCE13E2309600622BD0 /* SBJsonStreamParser.m */,
+				C578ECCF13E2309600622BD0 /* SBJsonStreamParserAccumulator.h */,
+				C578ECD013E2309600622BD0 /* SBJsonStreamParserAccumulator.m */,
+				C578ECD113E2309600622BD0 /* SBJsonStreamParserAdapter.h */,
+				C578ECD213E2309600622BD0 /* SBJsonStreamParserAdapter.m */,
+				C578ECD313E2309600622BD0 /* SBJsonStreamParserState.h */,
+				C578ECD413E2309600622BD0 /* SBJsonStreamParserState.m */,
+				C578ECD513E2309600622BD0 /* SBJsonStreamWriter.h */,
+				C578ECD613E2309600622BD0 /* SBJsonStreamWriter.m */,
+				C578ECD713E2309600622BD0 /* SBJsonStreamWriterAccumulator.h */,
+				C578ECD813E2309600622BD0 /* SBJsonStreamWriterAccumulator.m */,
+				C578ECD913E2309600622BD0 /* SBJsonStreamWriterState.h */,
+				C578ECDA13E2309600622BD0 /* SBJsonStreamWriterState.m */,
+				C578ECDB13E2309600622BD0 /* SBJsonTokeniser.h */,
+				C578ECDC13E2309600622BD0 /* SBJsonTokeniser.m */,
+				C578ECDD13E2309600622BD0 /* SBJsonUTF8Stream.h */,
+				C578ECDE13E2309600622BD0 /* SBJsonUTF8Stream.m */,
+				C578ECDF13E2309600622BD0 /* SBJsonWriter.h */,
+				C578ECE013E2309600622BD0 /* SBJsonWriter.m */,
+			);
+			path = SBJson;
+			sourceTree = "<group>";
+		};
 		C5F6D35513E221C8009AFA5C = {
 			isa = PBXGroup;
 			children = (
+				C578ED0913E285A500622BD0 /* CFNetwork.framework */,
+				C578ED0713E2858A00622BD0 /* CoreFoundation.framework */,
+				C578ED0213E2498500622BD0 /* AVFoundation.framework */,
+				C578ECFB13E2427500622BD0 /* AudioToolbox.framework */,
+				C578ECFC13E2427500622BD0 /* CoreAudio.framework */,
 				C5F6D36A13E221C8009AFA5C /* Google Music Player */,
 				C5F6D36313E221C8009AFA5C /* Frameworks */,
 				C5F6D36113E221C8009AFA5C /* Products */,
@@ -79,6 +227,9 @@
 		C5F6D36A13E221C8009AFA5C /* Google Music Player */ = {
 			isa = PBXGroup;
 			children = (
+				C578ED0413E2845500622BD0 /* AudioStreamer.h */,
+				C578ED0513E2845600622BD0 /* AudioStreamer.m */,
+				C578ECC613E2309600622BD0 /* SBJson */,
 				C5F6D37313E221C8009AFA5C /* Google_Music_PlayerAppDelegate.h */,
 				C5F6D37413E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m */,
 				C5F6D37613E221C8009AFA5C /* MainWindow.xib */,
@@ -86,6 +237,38 @@
 				C5F6D37A13E221C8009AFA5C /* RootViewController.m */,
 				C5F6D37C13E221C9009AFA5C /* RootViewController.xib */,
 				C5F6D36B13E221C8009AFA5C /* Supporting Files */,
+				C5F6D38913E223E3009AFA5C /* SongLibraryViewController.h */,
+				C5F6D38A13E223E3009AFA5C /* SongLibraryViewController.m */,
+				C5F6D38B13E223E3009AFA5C /* SongLibraryViewController.xib */,
+				C5F6D38E13E22407009AFA5C /* GMManager.h */,
+				C5F6D38F13E22407009AFA5C /* GMManager.m */,
+				C578ECFF13E2429D00622BD0 /* GMAudioPlayer.h */,
+				C578ED0013E2429D00622BD0 /* GMAudioPlayer.m */,
+				C578ED0B13E2873700622BD0 /* GMSong.h */,
+				C578ED0C13E2873700622BD0 /* GMSong.m */,
+				C5145FE213E28FA900C19FFC /* SongsViewController.h */,
+				C5145FE313E28FA900C19FFC /* SongsViewController.m */,
+				C5145FE413E28FA900C19FFC /* SongsViewController.xib */,
+				C5145FE813E28FB600C19FFC /* ArtistsViewController.h */,
+				C5145FE913E28FB600C19FFC /* ArtistsViewController.m */,
+				C5145FEA13E28FB600C19FFC /* ArtistsViewController.xib */,
+				C5145FED13E28FC400C19FFC /* AlbumsViewController.h */,
+				C5145FEE13E28FC400C19FFC /* AlbumsViewController.m */,
+				C5145FEF13E28FC400C19FFC /* AlbumsViewController.xib */,
+				C5145FF213E2FB5A00C19FFC /* LoginViewController.h */,
+				C5145FF313E2FB5A00C19FFC /* LoginViewController.m */,
+				C5145FF413E2FB5B00C19FFC /* LoginViewController.xib */,
+				C5FB109813E48ABA008996B0 /* GMSongCacheViewController.h */,
+				C5FB109A13E48B68008996B0 /* GMSongCache.h */,
+				C5FB109B13E48B68008996B0 /* GMSongCache.m */,
+				C5FB109D13E48F04008996B0 /* GMServerSync.h */,
+				C5FB109E13E48F04008996B0 /* GMServerSync.m */,
+				C5FB10A013E490F3008996B0 /* GMPlaylistManager.h */,
+				C5FB10A113E490F3008996B0 /* GMPlaylistManager.m */,
+				C5FB10BF13E7A2C9008996B0 /* GMAlbum.h */,
+				C5FB10C013E7A2CA008996B0 /* GMAlbum.m */,
+				C5FB10C313E7A304008996B0 /* GMArtist.h */,
+				C5FB10C413E7A304008996B0 /* GMArtist.m */,
 			);
 			path = "Google Music Player";
 			sourceTree = "<group>";
@@ -93,6 +276,9 @@
 		C5F6D36B13E221C8009AFA5C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C5145FFB13E2FDDA00C19FFC /* loginButton-disabled.png */,
+				C5145FFC13E2FDDA00C19FFC /* loginButton-highlighted.png */,
+				C5145FFD13E2FDDA00C19FFC /* loginButton-normal.png */,
 				C5F6D36C13E221C8009AFA5C /* Google Music Player-Info.plist */,
 				C5F6D36D13E221C8009AFA5C /* InfoPlist.strings */,
 				C5F6D37013E221C8009AFA5C /* main.m */,
@@ -154,6 +340,14 @@
 				C5F6D36F13E221C8009AFA5C /* InfoPlist.strings in Resources */,
 				C5F6D37813E221C8009AFA5C /* MainWindow.xib in Resources */,
 				C5F6D37E13E221C9009AFA5C /* RootViewController.xib in Resources */,
+				C5F6D38D13E223E3009AFA5C /* SongLibraryViewController.xib in Resources */,
+				C5145FE613E28FA900C19FFC /* SongsViewController.xib in Resources */,
+				C5145FEC13E28FB600C19FFC /* ArtistsViewController.xib in Resources */,
+				C5145FF113E28FC400C19FFC /* AlbumsViewController.xib in Resources */,
+				C5145FF613E2FB5D00C19FFC /* LoginViewController.xib in Resources */,
+				C5145FFE13E2FDDA00C19FFC /* loginButton-disabled.png in Resources */,
+				C5145FFF13E2FDDA00C19FFC /* loginButton-highlighted.png in Resources */,
+				C514600013E2FDDA00C19FFC /* loginButton-normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +361,32 @@
 				C5F6D37113E221C8009AFA5C /* main.m in Sources */,
 				C5F6D37513E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m in Sources */,
 				C5F6D37B13E221C8009AFA5C /* RootViewController.m in Sources */,
+				C5F6D38C13E223E3009AFA5C /* SongLibraryViewController.m in Sources */,
+				C5F6D39013E22408009AFA5C /* GMManager.m in Sources */,
+				C578ECE113E2309600622BD0 /* NSObject+SBJson.m in Sources */,
+				C578ECE213E2309600622BD0 /* SBJsonParser.m in Sources */,
+				C578ECE313E2309600622BD0 /* SBJsonStreamParser.m in Sources */,
+				C578ECE413E2309600622BD0 /* SBJsonStreamParserAccumulator.m in Sources */,
+				C578ECE513E2309600622BD0 /* SBJsonStreamParserAdapter.m in Sources */,
+				C578ECE613E2309600622BD0 /* SBJsonStreamParserState.m in Sources */,
+				C578ECE713E2309600622BD0 /* SBJsonStreamWriter.m in Sources */,
+				C578ECE813E2309600622BD0 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				C578ECE913E2309600622BD0 /* SBJsonStreamWriterState.m in Sources */,
+				C578ECEA13E2309600622BD0 /* SBJsonTokeniser.m in Sources */,
+				C578ECEB13E2309600622BD0 /* SBJsonUTF8Stream.m in Sources */,
+				C578ECEC13E2309600622BD0 /* SBJsonWriter.m in Sources */,
+				C578ED0113E2429D00622BD0 /* GMAudioPlayer.m in Sources */,
+				C578ED0613E2845600622BD0 /* AudioStreamer.m in Sources */,
+				C578ED0D13E2873700622BD0 /* GMSong.m in Sources */,
+				C5145FE513E28FA900C19FFC /* SongsViewController.m in Sources */,
+				C5145FEB13E28FB600C19FFC /* ArtistsViewController.m in Sources */,
+				C5145FF013E28FC400C19FFC /* AlbumsViewController.m in Sources */,
+				C5145FF513E2FB5D00C19FFC /* LoginViewController.m in Sources */,
+				C5FB109C13E48B68008996B0 /* GMSongCache.m in Sources */,
+				C5FB109F13E48F04008996B0 /* GMServerSync.m in Sources */,
+				C5FB10A213E490F3008996B0 /* GMPlaylistManager.m in Sources */,
+				C5FB10C113E7A2CB008996B0 /* GMAlbum.m in Sources */,
+				C5FB10C513E7A305008996B0 /* GMArtist.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +468,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Google Music Player/Google Music Player-Prefix.pch";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				INFOPLIST_FILE = "Google Music Player/Google Music Player-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -259,6 +480,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Google Music Player/Google Music Player-Prefix.pch";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				INFOPLIST_FILE = "Google Music Player/Google Music Player-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -284,6 +506,7 @@
 				C5F6D38313E221C9009AFA5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

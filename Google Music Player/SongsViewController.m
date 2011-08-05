@@ -8,6 +8,8 @@
 
 #import "SongsViewController.h"
 
+#import "GMServerSync.h"
+
 @implementation SongsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -19,12 +21,37 @@
     return self;
 }
 
+-(void)dealloc
+{
+    [super dealloc];
+}
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+-(void)setSongCache:(GMSongCache *)aSongCache
+{
+    songCache = aSongCache;
+}
+
+-(void)setAudioPlayer:(GMAudioPlayer *)anAudioPlayer
+{
+    audioPlayer = anAudioPlayer;
+}
+
+-(void)setPlaylistManager:(GMPlaylistManager *)aPlaylistManager
+{
+    playlistManager = aPlaylistManager;
+}
+
+-(void)syncSongCache
+{
+    [songCache synchronize];
 }
 
 #pragma mark - View lifecycle
@@ -38,6 +65,15 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIBarButtonItem* button = [[UIBarButtonItem alloc] initWithTitle:@"Sync" style:UIBarButtonItemStylePlain target:self action:@selector(syncSongCache)];
+    self.navigationItem.rightBarButtonItem = button;
+    [button release];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kGMServerSyncFinishedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification* notification) {
+        NSLog(@"GMServerSync finished; Refreshing user interface.");
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)viewDidUnload
@@ -77,15 +113,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
+    if(songCache != nil)
+    {
+        return 1;
+    }
+    
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
+    
+    if(songCache != nil)
+    {
+        return [songCache.songs count];
+    }
+    
     return 0;
 }
 
@@ -95,10 +140,18 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
+    
+    if(songCache != nil)
+    {
+        GMSong* song = [songCache.songs objectAtIndex:indexPath.row];
+        
+        [cell.textLabel setText:song.title];
+        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@ - %@", song.artist, song.album]];
+    }
     
     return cell;
 }
@@ -154,6 +207,11 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    GMSong* song = [songCache.songs objectAtIndex:indexPath.row];
+    [playlistManager playSong:song];
 }
 
 @end

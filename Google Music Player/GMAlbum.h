@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GMAlbum : NSObject
+@class GMArtist;
+
+@interface GMAlbum : NSObject {
+    GMArtist* artist;
+    NSString* title;
+    
+    NSMutableArray* songs;
+}
+
+@property (nonatomic, assign) GMArtist* artist;
+@property (nonatomic, assign) NSString* title;
+
+@property (nonatomic, retain) NSMutableArray* songs;
 
 @end

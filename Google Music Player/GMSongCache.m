@@ -8,7 +8,13 @@
 
 #import "GMSongCache.h"
 
+#import "GMServerSync.h"
+
 @implementation GMSongCache
+
+@synthesize songs;
+@synthesize artists;
+@synthesize albums;
 
 - (id)init
 {
@@ -18,6 +24,14 @@
     }
     
     return self;
+}
+
+-(void)synchronize
+{
+    GMServerSync* serverSync = [[[GMServerSync alloc] init] autorelease];
+    serverSync.songCache = self;
+    
+    [serverSync synchronize];
 }
 
 @end

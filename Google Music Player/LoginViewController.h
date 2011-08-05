@@ -8,6 +8,29 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UITableViewController
+@interface LoginViewController : UITableViewController<UIWebViewDelegate> {
+    NSMutableData* responseData;
+    
+    NSURLConnection* clientLoginConnection;
+    NSURLConnection* musicTestConnection;
+    
+    BOOL loginSuccessful;
+    
+    UIWebView* webView;
+}
+
+@property (nonatomic, retain) IBOutlet UITableViewCell* usernameCell;
+@property (nonatomic, retain) IBOutlet UITableViewCell* passwordCell;
+
+@property (nonatomic, retain) IBOutlet UITableViewCell* loginButtonCell;
+
+@property (nonatomic, retain) IBOutlet UITextField* usernameField;
+@property (nonatomic, retain) IBOutlet UITextField* passwordField;
+
+-(IBAction)loginButtonPressed:(id)sender;
+
+-(void)sendGoogleLoginRequest;
+
+-(void)saveCookies;
 
 @end

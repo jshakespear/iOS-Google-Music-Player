@@ -8,6 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GMArtist : NSObject
+#import "GMAlbum.h"
+#import "GMSong.h"
+
+@interface GMArtist : NSObject {
+    NSString* name;
+    
+    NSMutableArray* albums;
+    NSMutableArray* songs;
+}
+
+@property (nonatomic, assign) NSString* name;
+
+@property (nonatomic, retain) NSMutableArray* albums;
+@property (nonatomic, retain) NSMutableArray* songs;
 
 @end

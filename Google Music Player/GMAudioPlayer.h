@@ -8,6 +8,43 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GMAudioPlayer : NSObject
+#import "AudioStreamer.h"
+
+/*
+ * GMAudioPlayerDelegate
+ * Receives notifications when a song is played, paused,
+ * stopped, or finished playing.
+ */
+
+@class GMAudioPlayer;
+
+@protocol GMAudioPlayerDelegate <NSObject>
+
+@required
+-(void)audioPlayerStartedPlaying;
+-(void)audioPlayerPaused;
+-(void)audioPlayerStopped;
+-(void)audioPlayerFinished;
+
+@end
+
+/*
+ * GMAudioPlayer
+ * Streams audio from an HTTP stream that Google Music supplies.
+ */
+
+@interface GMAudioPlayer : NSObject {
+    AudioStreamer* audioStreamer;
+    
+    id<GMAudioPlayerDelegate> delegate;
+}
+
+@property (nonatomic, assign) id<GMAudioPlayerDelegate> delegate;
+
+-(void)playStreamWithURL:(NSURL*)streamURL;
+
+-(void)play;
+-(void)pause;
+-(void)stop;
 
 @end

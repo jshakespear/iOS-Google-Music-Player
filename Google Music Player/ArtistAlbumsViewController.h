@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AristAlbumsViewController : UITableViewController
+#import "GMArtist.h"
+#import "GMPlaylistManager.h"
+
+@interface ArtistAlbumsViewController : UITableViewController {
+    GMPlaylistManager* playlistManager;
+}
+
+@property (nonatomic, assign) GMPlaylistManager* playlistManager;
+
+@property (nonatomic, retain) GMArtist* artist;
 
 @end

@@ -11,6 +11,8 @@
 #import "GMSong.h"
 #import "GMServerSync.h"
 
+#import "ArtistAlbumsViewController.h"
+
 @implementation ArtistsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -20,6 +22,15 @@
         // Custom initialization
     }
     return self;
+}
+
+-(void)dealloc
+{
+    [indices release];
+    [indicesOrder release];
+    [indicesKeys release];
+    
+    [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning
@@ -32,12 +43,22 @@
 
 -(void)setSongCache:(GMSongCache *)aSongCache
 {
-    songCache = aSongCache;
+    if(songCache == nil)
+    {
+        songCache = aSongCache;
+        
+        [self setupSongSync];
+    }
 }
 
 -(void)setAudioPlayer:(GMAudioPlayer *)anAudioPlayer
 {
     audioPlayer = anAudioPlayer;
+}
+
+-(void)setPlaylistManager:(GMPlaylistManager *)aPlaylistManager
+{
+    playlistManager = aPlaylistManager;
 }
 
 -(void)syncSongCache
@@ -49,6 +70,56 @@
 {
    // songs = [songCache.songs sortedArrayUsingComparator:^(id obj1, id obj2) {
    // }];
+}
+
+-(void)setupIndices
+{
+    [indices release];
+    indices = [[NSMutableDictionary alloc] init];
+    
+    int count = [songCache.artists count];
+    
+    for(GMArtist* artist in songCache.artists)
+    {
+        if([artist.name isEqualToString:@""])
+            continue;
+        
+        NSString* key = [NSString stringWithFormat:@"%c", [[artist.name capitalizedString] characterAtIndex:0]];
+        NSMutableArray* artistsForKey = [indices objectForKey:key];
+        if(artistsForKey == nil)
+        {
+            artistsForKey = [[NSMutableArray alloc] init];
+            [indices setObject:artistsForKey forKey:key];
+        }
+        
+        [artistsForKey addObject:[NSNumber numberWithInt:[songCache.artists indexOfObject:artist]]];
+    }
+    
+    // Now order the keys
+    
+    [indicesOrder release];
+    indicesOrder = [[NSMutableDictionary alloc] init];
+    
+    NSArray* orderedKeys = [[indices allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2];
+    }];
+    
+    indicesKeys = [orderedKeys retain];
+    
+    for(int i = 0; i < [orderedKeys count]; ++i)
+    {
+        [indicesOrder setObject:[[orderedKeys objectAtIndex:i] copy] forKey:[NSNumber numberWithInt:i]];
+    }
+}
+
+-(void)setupSongSync
+{
+    [[NSNotificationCenter defaultCenter] addObserverForName:kGMServerSyncFinishedNotification object:nil queue:nil usingBlock:^(NSNotification* notification) {
+        NSLog(@"GMServerSync finished; Refreshing user interface.");
+        
+        [self setupIndices];
+        [self.tableView reloadData];
+    }];
 }
 
 #pragma mark - View lifecycle
@@ -66,11 +137,6 @@
     UIBarButtonItem* button = [[UIBarButtonItem alloc] initWithTitle:@"Sync" style:UIBarButtonItemStylePlain target:self action:@selector(syncSongCache)];
     self.navigationItem.rightBarButtonItem = button;
     [button release];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:kGMServerSyncFinishedNotification object:nil queue:nil usingBlock:^(NSNotification* notification) {
-        NSLog(@"GMServerSync finished; Refreshing user interface.");
-        [self.tableView reloadData];
-    }];
 }
 
 - (void)viewDidUnload
@@ -88,11 +154,22 @@
 
 #pragma mark - Table view data source
 
+-(NSArray*)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return indicesKeys;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return index;
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if(songCache != nil)
     {
-        return 1;
+        return [indices count];
     }
     
     return 1;
@@ -102,7 +179,7 @@
 {
     if(songCache != nil)
     {
-        return [songCache.artists count];
+        return [[indices objectForKey:[indicesOrder objectForKey:[NSNumber numberWithInt:section]]] count];
     }
     
     return 0;
@@ -121,12 +198,17 @@
     
     if(songCache != nil)
     {
-        GMArtist* artist = [songCache.artists objectAtIndex:indexPath.row];
+        NSMutableArray* sectionIndices = [indices objectForKey:[indicesOrder objectForKey:[NSNumber numberWithInt:indexPath.section]]];
+        int index = [[sectionIndices objectAtIndex:indexPath.row] intValue];
+        GMArtist* artist = [songCache.artists objectAtIndex:index];
+        
         int numAlbums = [artist.albums count];
         [cell.textLabel setText:artist.name];
         
         NSString* mod = numAlbums > 1 ? @"s" : @"";
         [cell.detailTextLabel setText:[NSString stringWithFormat:@"%i album%@", numAlbums, mod]];
+        
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     
     return cell;
@@ -136,10 +218,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(songCache != nil && audioPlayer != nil)
-    {
-        // Play the selected song
-    }
+    NSMutableArray* sectionIndices = [indices objectForKey:[indicesOrder objectForKey:[NSNumber numberWithInt:indexPath.section]]];
+    int index = [[sectionIndices objectAtIndex:indexPath.row] intValue];
+    GMArtist* artist = [songCache.artists objectAtIndex:index];
+    
+    ArtistAlbumsViewController* artistAlbums = [[ArtistAlbumsViewController alloc] initWithNibName:@"ArtistAlbumsViewController" bundle:nil];
+    [artistAlbums setArtist:artist];
+    [artistAlbums setPlaylistManager:playlistManager];
+    
+    [self.navigationController pushViewController:artistAlbums animated:YES];
+    
+    [artistAlbums release];
 }
 
 @end

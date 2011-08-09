@@ -14,6 +14,7 @@
 
 @protocol GMSongCacheViewController <NSObject>
 
+@optional
 -(void)setSongCache:(GMSongCache*)aSongCache;
 -(void)setAudioPlayer:(GMAudioPlayer*)anAudioPlayer;
 -(void)setPlaylistManager:(GMPlaylistManager*)aPlaylistManager;

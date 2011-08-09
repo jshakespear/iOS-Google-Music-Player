@@ -10,12 +10,18 @@
 
 #import "GMSongCacheViewController.h"
 
+#define kToggleButtonSize (35.0f)
+
 @implementation Google_Music_PlayerAppDelegate
 
 @synthesize googleMusicManager;
 
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
+
+@synthesize playlistView=_playlistView;
+@synthesize playPauseButton;
+@synthesize playlistViewToggleButton;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -27,6 +33,7 @@
     
     playlistManager = [[GMPlaylistManager alloc] init];
     playlistManager.audioPlayer = audioPlayer;
+    playlistManager.delegate = self;
     
     for(UIViewController* viewController in self.tabBarController.viewControllers)
     {
@@ -56,6 +63,15 @@
             }
         }
     }
+    
+    CGRect tabBarFrame = self.tabBarController.tabBar.frame;
+    CGRect playlistViewFrame = self.playlistView.frame;
+    playlistViewFrame.origin = tabBarFrame.origin;
+    playlistViewFrame.origin.y -= self.playlistView.frame.size.height;
+    self.playlistView.frame = playlistViewFrame;
+    [self.tabBarController.view insertSubview:self.playlistView belowSubview:self.tabBarController.tabBar];
+    
+    playlistViewVisible = YES;
 
     [songCache synchronize];
     
@@ -64,6 +80,52 @@
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+-(IBAction)togglePlaylistViewVisible
+{
+    if(playlistViewVisible)
+    {
+        CGRect frame = self.playlistView.frame;
+        frame.origin.y += frame.size.height - kToggleButtonSize;
+        
+        [UIView animateWithDuration:0.5f animations:^(void) {
+            self.playlistView.frame = frame;
+        }];
+        
+        playlistViewVisible = NO;
+    }
+    else
+    {
+        CGRect frame = self.playlistView.frame;
+        frame.origin.y -= frame.size.height - kToggleButtonSize;
+        
+        [UIView animateWithDuration:0.5f animations:^(void) {
+            self.playlistView.frame = frame;
+        }];
+        
+        playlistViewVisible = YES;
+    }
+}
+
+-(IBAction)togglePlayPause
+{
+    if([audioPlayer playing])
+    {
+        [audioPlayer pause];
+        self.playPauseButton.selected = NO;
+    }
+    else
+    {
+        [audioPlayer play];
+        self.playPauseButton.selected = YES;
+    }
+}
+
+-(void)playlistManagerDidPlayNewSong:(GMSong *)song
+{
+    self.playPauseButton.selected = YES;
+    [self.playlistViewToggleButton setTitle:[NSString stringWithFormat:@"Now Playing '%@'", song.title] forState:UIControlStateNormal];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

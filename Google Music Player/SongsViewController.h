@@ -16,8 +16,20 @@
     GMSongCache* songCache;
     GMAudioPlayer* audioPlayer;
     GMPlaylistManager* playlistManager;
+    
+    NSMutableDictionary* indices;
+    NSMutableDictionary* indicesOrder;
+    NSArray* indicesKeys;
+    
+    BOOL useSongCache;
 }
 
+//  Set if you want to use a custom array, otherwise it will use the GMSongCache if it's set
+@property (nonatomic, retain) NSArray* songs;
+
+-(void)setupSongSync;
+
 -(void)syncSongCache;
+-(void)setupIndices;
 
 @end

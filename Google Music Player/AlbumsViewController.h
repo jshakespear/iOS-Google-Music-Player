@@ -15,6 +15,7 @@
 @interface AlbumsViewController : UITableViewController<GMSongCacheViewController> {
     GMSongCache* songCache;
     GMAudioPlayer* audioPlayer;
+    GMPlaylistManager* playlistManager;
 }
 
 -(void)syncSongCache;

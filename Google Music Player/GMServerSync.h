@@ -42,6 +42,7 @@
 -(void)parseData;
 
 -(NSArray*)sortSongsAlphabetically:(NSArray*)unorderedSongs;
+-(NSArray*)sortArtistsAlphabetically:(NSArray*)unorderedArtists;
 
 -(void)sort;
 

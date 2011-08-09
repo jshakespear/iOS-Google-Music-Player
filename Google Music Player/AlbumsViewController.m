@@ -10,6 +10,8 @@
 
 #import "GMServerSync.h"
 
+#import "SongsViewController.h"
+
 @implementation AlbumsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -31,12 +33,22 @@
 
 -(void)setSongCache:(GMSongCache *)aSongCache
 {
-    songCache = aSongCache;
+    if(songCache == nil)
+    {
+        songCache = aSongCache;
+        
+        //[self setupSongSync];
+    }
 }
 
 -(void)setAudioPlayer:(GMAudioPlayer *)anAudioPlayer
 {
     audioPlayer = anAudioPlayer;
+}
+
+-(void)setPlaylistManager:(GMPlaylistManager *)aPlaylistManager
+{
+    playlistManager = aPlaylistManager;
 }
 
 -(void)syncSongCache
@@ -141,6 +153,8 @@
         int songCount = [album.songs count];
         NSString* mod = songCount > 1 ? @"s" : @"";
         [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@ (%i song%@)", album.artist.name, songCount, mod]];
+        
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     
     return cell;
@@ -189,21 +203,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    SongsViewController* songs = [[SongsViewController alloc] initWithNibName:@"SongsViewController" bundle:nil];
     
-    NSLog(@"Songs in album:");
     GMAlbum* album = [songCache.albums objectAtIndex:indexPath.row];
-    for(GMSong* song in album.songs)
-    {
-        NSLog(@"\t%@", song.title);
-    }
+    [songs setSongs:album.songs];
+    [songs setTitle:album.title];
+    
+    [songs setPlaylistManager:playlistManager];
+    [songs setAudioPlayer:audioPlayer];
+    
+    [self.navigationController pushViewController:songs animated:YES];
+    
+    [songs release];
 }
 
 @end

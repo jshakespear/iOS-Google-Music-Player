@@ -76,7 +76,7 @@
     NSHTTPCookieStorage* cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     
     //NSLog(@"--- Cookies ---");
-    NSArray* cookies = [cookieStorage cookiesForURL:[NSURL URLWithString:@"http://music.google.com"]];
+    //NSArray* cookies = [cookieStorage cookiesForURL:[NSURL URLWithString:@"http://music.google.com"]];
     for(NSHTTPCookie* cookie in [cookieStorage cookies])
     {
         if([[cookie name] isEqualToString:@"xt"])

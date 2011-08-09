@@ -47,4 +47,7 @@
 -(void)pause;
 -(void)stop;
 
+-(BOOL)playing;
+-(BOOL)paused;
+
 @end

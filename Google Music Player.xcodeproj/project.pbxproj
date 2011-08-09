@@ -54,6 +54,10 @@
 		C5FB10A213E490F3008996B0 /* GMPlaylistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB10A113E490F3008996B0 /* GMPlaylistManager.m */; };
 		C5FB10C113E7A2CB008996B0 /* GMAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB10C013E7A2CA008996B0 /* GMAlbum.m */; };
 		C5FB10C513E7A305008996B0 /* GMArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB10C413E7A304008996B0 /* GMArtist.m */; };
+		C5FB10CC13EC8325008996B0 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = C5FB10CA13EC8325008996B0 /* pause.png */; };
+		C5FB10CD13EC8325008996B0 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = C5FB10CB13EC8325008996B0 /* play.png */; };
+		C5FCB21413EEFECE00A96199 /* ArtistAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FCB21213EEFECE00A96199 /* ArtistAlbumsViewController.m */; };
+		C5FCB21513EEFECE00A96199 /* ArtistAlbumsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5FCB21313EEFECE00A96199 /* ArtistAlbumsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +143,11 @@
 		C5FB10C013E7A2CA008996B0 /* GMAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAlbum.m; sourceTree = "<group>"; };
 		C5FB10C313E7A304008996B0 /* GMArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMArtist.h; sourceTree = "<group>"; };
 		C5FB10C413E7A304008996B0 /* GMArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMArtist.m; sourceTree = "<group>"; };
+		C5FB10CA13EC8325008996B0 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		C5FB10CB13EC8325008996B0 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		C5FCB21113EEFECE00A96199 /* ArtistAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ArtistAlbumsViewController.h; sourceTree = "<group>"; };
+		C5FCB21213EEFECE00A96199 /* ArtistAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistAlbumsViewController.m; sourceTree = "<group>"; };
+		C5FCB21313EEFECE00A96199 /* ArtistAlbumsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtistAlbumsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +278,9 @@
 				C5FB10C013E7A2CA008996B0 /* GMAlbum.m */,
 				C5FB10C313E7A304008996B0 /* GMArtist.h */,
 				C5FB10C413E7A304008996B0 /* GMArtist.m */,
+				C5FCB21113EEFECE00A96199 /* ArtistAlbumsViewController.h */,
+				C5FCB21213EEFECE00A96199 /* ArtistAlbumsViewController.m */,
+				C5FCB21313EEFECE00A96199 /* ArtistAlbumsViewController.xib */,
 			);
 			path = "Google Music Player";
 			sourceTree = "<group>";
@@ -278,6 +290,8 @@
 			children = (
 				C5145FFB13E2FDDA00C19FFC /* loginButton-disabled.png */,
 				C5145FFC13E2FDDA00C19FFC /* loginButton-highlighted.png */,
+				C5FB10CA13EC8325008996B0 /* pause.png */,
+				C5FB10CB13EC8325008996B0 /* play.png */,
 				C5145FFD13E2FDDA00C19FFC /* loginButton-normal.png */,
 				C5F6D36C13E221C8009AFA5C /* Google Music Player-Info.plist */,
 				C5F6D36D13E221C8009AFA5C /* InfoPlist.strings */,
@@ -348,6 +362,9 @@
 				C5145FFE13E2FDDA00C19FFC /* loginButton-disabled.png in Resources */,
 				C5145FFF13E2FDDA00C19FFC /* loginButton-highlighted.png in Resources */,
 				C514600013E2FDDA00C19FFC /* loginButton-normal.png in Resources */,
+				C5FB10CC13EC8325008996B0 /* pause.png in Resources */,
+				C5FB10CD13EC8325008996B0 /* play.png in Resources */,
+				C5FCB21513EEFECE00A96199 /* ArtistAlbumsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +404,7 @@
 				C5FB10A213E490F3008996B0 /* GMPlaylistManager.m in Sources */,
 				C5FB10C113E7A2CB008996B0 /* GMAlbum.m in Sources */,
 				C5FB10C513E7A305008996B0 /* GMArtist.m in Sources */,
+				C5FCB21413EEFECE00A96199 /* ArtistAlbumsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

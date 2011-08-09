@@ -117,9 +117,9 @@
         NSLog(@"\tElapsed download time: %f sec", [downloadEndTime timeIntervalSinceDate:downloadStartTime]);
         NSLog(@"\tElapsed parse time: %f sec", [parseEndTime timeIntervalSinceDate:parseStartTime]);
         
-        songCache.artists = [artists allValues];
+        songCache.artists = [self sortArtistsAlphabetically:[artists allValues]];
         songCache.albums = [albums allValues];
-        songCache.songs = songs;
+        songCache.songs = [self sortSongsAlphabetically:songs];
         
         // Post the notification
         NSNotification* notification = [NSNotification notificationWithName:kGMServerSyncFinishedNotification object:nil];
@@ -197,6 +197,18 @@
     }];
 }
 
+-(NSArray*)sortArtistsAlphabetically:(NSArray *)unorderedArtists
+{
+    return [unorderedArtists sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [[obj1 name] compare:[obj2 name]];
+    }];
+}
+
+-(void)sort
+{
+    
+}
+
 - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse
 {
     return request;
@@ -244,6 +256,5 @@
         NSLog(@"Error Info: %@", value);
     }
 }
-
 
 @end

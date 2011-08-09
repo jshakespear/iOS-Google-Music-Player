@@ -68,6 +68,16 @@
     }
 }
 
+-(BOOL)playing
+{
+    return audioStreamer.isPlaying;
+}
+
+-(BOOL)paused
+{
+    return audioStreamer.isPaused;
+}
+
 -(void)audioStreamerStateChanged:(NSNotification*)aNotification
 {
     switch (audioStreamer.state) {

@@ -6,9 +6,14 @@
 //  Copyright 2011 DiDev Studios. All rights reserved.
 //
 
-#import "AristAlbumsViewController.h"
+#import "ArtistAlbumsViewController.h"
 
-@implementation AristAlbumsViewController
+#import "SongsViewController.h"
+
+@implementation ArtistAlbumsViewController
+
+@synthesize playlistManager;
+@synthesize artist;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,6 +43,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.title = self.artist.name;
 }
 
 - (void)viewDidUnload
@@ -77,16 +84,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [artist.albums count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,10 +98,14 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
+    [cell.textLabel setText:[[self.artist.albums objectAtIndex:indexPath.row] title]];
+    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%i songs", [[[self.artist.albums objectAtIndex:indexPath.row] songs] count]]];
+    
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     return cell;
 }
@@ -146,14 +153,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    GMAlbum* album = [self.artist.albums objectAtIndex:indexPath.row];
+    
+    SongsViewController* songs = [[SongsViewController alloc] initWithNibName:@"SongsViewController" bundle:nil];
+    
+    [songs setSongs:album.songs];
+    [songs setTitle:album.title];
+    
+    [songs setPlaylistManager:playlistManager];
+    //[songs setAudioPlayer:audioPlayer];
+    
+    [self.navigationController pushViewController:songs animated:YES];
+    
+    [songs release];
 }
 
 @end

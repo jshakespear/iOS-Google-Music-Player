@@ -14,6 +14,9 @@
 
 @synthesize audioPlayer;
 @synthesize songs;
+@synthesize currentSong;
+
+@synthesize delegate;
 
 - (id)init
 {
@@ -35,6 +38,8 @@
 -(void)playSong:(GMSong*)song
 {
     [self downloadStreamInfoForSong:song]; // It will pass the URL to play once downloaded
+    currentSong = nil;
+    songToPlay = song;
 }
 
 -(void)downloadStreamInfoForSong:(GMSong *)song
@@ -107,6 +112,17 @@
     [audioPlayer playStreamWithURL:url];
     [audioPlayer play];
     NSLog(@"Opened stream.");
+    
+    currentSong = songToPlay;
+    songToPlay = nil;
+    
+    if(self.delegate != nil)
+    {
+        if([self.delegate respondsToSelector:@selector(playlistManagerDidPlayNewSong:)])
+        {
+            [self.delegate performSelector:@selector(playlistManagerDidPlayNewSong:) withObject:currentSong];
+        }
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response

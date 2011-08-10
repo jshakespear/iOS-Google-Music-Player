@@ -285,12 +285,37 @@
      */
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    /*
     NSMutableArray* sectionIndices = [indices objectForKey:[indicesOrder objectForKey:[NSNumber numberWithInt:indexPath.section]]];
     int index = [[sectionIndices objectAtIndex:indexPath.row] intValue];
     GMSong* song = [self.songs objectAtIndex:index];
     
-    [playlistManager playSong:song];
+    [playlistManager playSong:song]; */
+    
+    NSMutableArray* sectionIndices = [indices objectForKey:[indicesOrder objectForKey:[NSNumber numberWithInt:indexPath.section]]];
+    int rawIndex = [[sectionIndices objectAtIndex:indexPath.row] intValue];
+    GMSong* selectedSong = [self.songs objectAtIndex:rawIndex];
+    
+    int selectedIndex = 0;
+    int currentIndex = 0;
+    NSMutableArray* songsList = [NSMutableArray array];
+    for(NSString* sectionKey in indicesKeys)
+    {
+        NSMutableArray* songsForSection = [indices objectForKey:sectionKey];
+        for(NSNumber* songNum in songsForSection)
+        {
+            GMSong* song = [self.songs objectAtIndex:[songNum intValue]];
+            [songsList addObject:song];
+            if(song == selectedSong)
+            {
+                selectedIndex = currentIndex;
+            }
+            
+            currentIndex++;
+        }
+    }
+    
+    [playlistManager setItemsWithSongs:songsList firstIndex:selectedIndex];
 }
 
 @end

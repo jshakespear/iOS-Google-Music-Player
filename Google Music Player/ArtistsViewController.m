@@ -77,7 +77,7 @@
     [indices release];
     indices = [[NSMutableDictionary alloc] init];
     
-    int count = [songCache.artists count];
+  //  int count = [songCache.artists count];
     
     for(GMArtist* artist in songCache.artists)
     {

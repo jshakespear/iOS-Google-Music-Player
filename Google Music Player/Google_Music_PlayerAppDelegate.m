@@ -113,19 +113,29 @@
     if([audioPlayer playing])
     {
         [audioPlayer pause];
-        self.playPauseButton.selected = NO;
     }
     else
     {
         [audioPlayer play];
-        self.playPauseButton.selected = YES;
     }
 }
 
--(void)playlistManagerDidPlayNewSong:(GMSong *)song
+-(void)playlistManagerDidPlayItem:(GMPlaylistItem*)item resuming:(BOOL)resuming
 {
     self.playPauseButton.selected = YES;
-    [self.playlistViewToggleButton setTitle:[NSString stringWithFormat:@"Now Playing '%@'", song.title] forState:UIControlStateNormal];
+    [self.playlistViewToggleButton setTitle:[NSString stringWithFormat:@"Playing '%@'", item.song.title] forState:UIControlStateNormal];
+}
+
+-(void)playlistManagerDidPauseItem:(GMPlaylistItem*)item
+{
+    self.playPauseButton.selected = NO;
+    [self.playlistViewToggleButton setTitle:[NSString stringWithFormat:@"Paused '%@'", item.song.title] forState:UIControlStateNormal];
+}
+
+-(void)playlistManagerDidFinishPlayingItem:(GMPlaylistItem*)item
+{
+    self.playPauseButton.selected = NO;
+    [self.playlistViewToggleButton setTitle:@"No Song Playing" forState:UIControlStateNormal];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

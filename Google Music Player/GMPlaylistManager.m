@@ -13,8 +13,8 @@
 @implementation GMPlaylistManager
 
 @synthesize audioPlayer;
-@synthesize songs;
-@synthesize currentSong;
+@synthesize items;
+@synthesize currentItem;
 
 @synthesize delegate;
 
@@ -23,7 +23,10 @@
     self = [super init];
     if (self) {
         // Initialization code here.
-        songs = [[NSMutableArray alloc] init];
+        items = [[NSMutableArray alloc] init];
+        
+        lastStreamerState = AS_INITIALIZED;
+        [self registerForAudioStreamerStateChanges];
     }
     
     return self;
@@ -31,15 +34,184 @@
 
 -(void)dealloc
 {
-    [songs release];
+    [items release];
     [super dealloc];
+}
+
+-(void)registerForAudioStreamerStateChanges
+{
+    [[NSNotificationCenter defaultCenter] addObserverForName:ASStatusChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification* notification) {
+        
+        AudioStreamer* streamer = notification.object;
+        AudioStreamerState state = streamer.state;
+        
+        /*
+         * State Flow:
+         *
+         *  1. AS_STARTING_FILE_THREAD
+         *  2. AS_WAITING_FOR_DATA
+         *  3. AS_WAITING_FOR_QUEUE_TO_START
+         *  4. AS_PLAYING
+         *  ... // Room here to pause (AS_PAUSED), etc, etc
+         *  5. AS_STOPPING
+         *  6. AS_STOPPED
+         *  7. AS_INITIALIZED
+         */
+        
+        if(state == AS_INITIALIZED)
+        {
+        }
+        else if(state == AS_PLAYING)
+        {
+            BOOL resuming = NO;
+            
+            if(lastStreamerState == AS_PAUSED || lastStreamerState == AS_STOPPED)
+            {
+                // Just started playing
+                resuming = YES;
+            }
+            
+            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(playlistManagerDidPlayItem:resuming:)])
+            {
+                [self.delegate playlistManagerDidPlayItem:self.currentItem resuming:resuming];
+            }
+        }
+        else if(state == AS_PAUSED)
+        {
+            // Paused
+            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(playlistManagerDidPauseItem:)])
+            {
+                [self.delegate playlistManagerDidPauseItem:self.currentItem];
+            }
+        }
+        else if(state == AS_STOPPING)
+        {
+        }
+        else if(state == AS_STOPPED)
+        {
+            if(streamer.stopReason != AS_STOPPING_USER_ACTION)
+            {
+                if(self.delegate != nil && [self.delegate respondsToSelector:@selector(playlistManagerDidFinishPlayingItem:)])
+                {
+                    [self.delegate playlistManagerDidFinishPlayingItem:self.currentItem];
+                }
+                
+                if(![self isFinished])
+                {
+                    [self playNextItem];
+                }
+                else
+                {
+                    NSLog(@"Playlist finished.");
+                }
+            }
+        }
+        else if(state == AS_WAITING_FOR_DATA)
+        {
+        }
+        else if(state == AS_WAITING_FOR_QUEUE_TO_START)
+        {
+        }
+        else if(state == AS_STARTING_FILE_THREAD)
+        {
+        }
+        else if(state == AS_BUFFERING)
+        {
+        }
+        else
+        {
+            NSLog(@"Unhandled state");
+        }
+               
+        
+        lastStreamerState = state;
+        
+    }];
+}
+
+-(BOOL)isFinished
+{
+    BOOL finished = YES;
+    for(GMPlaylistItem* item in self.items)
+    {
+        if(item.played == NO)
+        {
+            finished = NO;
+            break;
+        }
+    }
+    
+    return finished;
 }
 
 -(void)playSong:(GMSong*)song
 {
     [self downloadStreamInfoForSong:song]; // It will pass the URL to play once downloaded
-    currentSong = nil;
+    //self.currentItem = nil;
     songToPlay = song;
+}
+
+-(void)playItem:(GMPlaylistItem *)item
+{
+    [self playSong:item.song];
+    item.played = YES;
+}
+
+-(void)playNextItem
+{
+   /* int i = 0;
+    for(GMPlaylistItem* item in self.items)
+    {
+        NSLog(@"[%i] %@", i++, item.song.title);
+    } */
+    
+    int index = [self.items indexOfObject:self.currentItem];
+    assert(index != NSNotFound);
+    
+    BOOL foundNextItem = NO;
+    
+    while(index < [self.items count])
+    {
+        index++;
+        GMPlaylistItem* potentialItem = [self.items objectAtIndex:index];
+        if(!potentialItem.played)
+        {
+            foundNextItem = YES;
+            break;
+        }
+    }
+    
+    self.currentItem = [self.items objectAtIndex:index]; 
+    [self playItem:self.currentItem];
+}
+
+-(void)setItemsWithSongs:(NSArray *)songs firstIndex:(int)index
+{
+    //NSLog(@"Setting current playlist to %i songs, playing song at index = %i", [songs count], index);
+    
+    NSMutableArray* newItems = [[NSMutableArray alloc] init];
+    
+    // Do this weird to maintain order!
+    for(int i = index; i < [songs count]; ++i)
+    {
+        GMSong* song = [songs objectAtIndex:i];
+        [newItems addObject:[[GMPlaylistItem alloc] initWithSong:song]];
+    }
+    
+    for(int i = 0; i < index; ++i)
+    {
+        GMSong* song = [songs objectAtIndex:i];
+        [newItems addObject:[[GMPlaylistItem alloc] initWithSong:song]];
+    }
+    
+    self.items = newItems;
+    [newItems release];
+    
+    //NSLog(@"self.items.count = %i", [self.items count]);
+    
+    self.currentItem = [self.items objectAtIndex:0];
+    
+    [self playItem:self.currentItem];
 }
 
 -(void)downloadStreamInfoForSong:(GMSong *)song
@@ -113,16 +285,7 @@
     [audioPlayer play];
     NSLog(@"Opened stream.");
     
-    currentSong = songToPlay;
     songToPlay = nil;
-    
-    if(self.delegate != nil)
-    {
-        if([self.delegate respondsToSelector:@selector(playlistManagerDidPlayNewSong:)])
-        {
-            [self.delegate performSelector:@selector(playlistManagerDidPlayNewSong:) withObject:currentSong];
-        }
-    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response

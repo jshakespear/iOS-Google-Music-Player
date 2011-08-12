@@ -44,10 +44,6 @@
 		C5F6D37113E221C8009AFA5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F6D37013E221C8009AFA5C /* main.m */; };
 		C5F6D37513E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F6D37413E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m */; };
 		C5F6D37813E221C8009AFA5C /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F6D37613E221C8009AFA5C /* MainWindow.xib */; };
-		C5F6D37B13E221C8009AFA5C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F6D37A13E221C8009AFA5C /* RootViewController.m */; };
-		C5F6D37E13E221C9009AFA5C /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F6D37C13E221C9009AFA5C /* RootViewController.xib */; };
-		C5F6D38C13E223E3009AFA5C /* SongLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F6D38A13E223E3009AFA5C /* SongLibraryViewController.m */; };
-		C5F6D38D13E223E3009AFA5C /* SongLibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F6D38B13E223E3009AFA5C /* SongLibraryViewController.xib */; };
 		C5F6D39013E22408009AFA5C /* GMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F6D38F13E22407009AFA5C /* GMManager.m */; };
 		C5F9EB2E13F1F9AF009D02DE /* GMPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F9EB2D13F1F9AF009D02DE /* GMPlaylistItem.m */; };
 		C5FB109C13E48B68008996B0 /* GMSongCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB109B13E48B68008996B0 /* GMSongCache.m */; };
@@ -105,15 +101,15 @@
 		C578ECE013E2309600622BD0 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		C578ECFB13E2427500622BD0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C578ECFC13E2427500622BD0 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		C578ECFF13E2429D00622BD0 /* GMAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMAudioPlayer.h; sourceTree = "<group>"; };
-		C578ED0013E2429D00622BD0 /* GMAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAudioPlayer.m; sourceTree = "<group>"; };
+		C578ECFF13E2429D00622BD0 /* GMAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMAudioPlayer.h; path = "Google Music Player/GMAudioPlayer.h"; sourceTree = "<group>"; };
+		C578ED0013E2429D00622BD0 /* GMAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMAudioPlayer.m; path = "Google Music Player/GMAudioPlayer.m"; sourceTree = "<group>"; };
 		C578ED0213E2498500622BD0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		C578ED0413E2845500622BD0 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
-		C578ED0513E2845600622BD0 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		C578ED0413E2845500622BD0 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioStreamer.h; path = "Google Music Player/AudioStreamer.h"; sourceTree = "<group>"; };
+		C578ED0513E2845600622BD0 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioStreamer.m; path = "Google Music Player/AudioStreamer.m"; sourceTree = "<group>"; };
 		C578ED0713E2858A00622BD0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		C578ED0913E285A500622BD0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		C578ED0B13E2873700622BD0 /* GMSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSong.h; sourceTree = "<group>"; };
-		C578ED0C13E2873700622BD0 /* GMSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSong.m; sourceTree = "<group>"; };
+		C578ED0B13E2873700622BD0 /* GMSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMSong.h; path = "Google Music Player/GMSong.h"; sourceTree = "<group>"; };
+		C578ED0C13E2873700622BD0 /* GMSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMSong.m; path = "Google Music Player/GMSong.m"; sourceTree = "<group>"; };
 		C5F6D36013E221C8009AFA5C /* Google Music Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Google Music Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5F6D36413E221C8009AFA5C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C5F6D36613E221C8009AFA5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -125,27 +121,21 @@
 		C5F6D37313E221C8009AFA5C /* Google_Music_PlayerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Google_Music_PlayerAppDelegate.h; sourceTree = "<group>"; };
 		C5F6D37413E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Google_Music_PlayerAppDelegate.m; sourceTree = "<group>"; };
 		C5F6D37713E221C8009AFA5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		C5F6D37913E221C8009AFA5C /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		C5F6D37A13E221C8009AFA5C /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		C5F6D37D13E221C9009AFA5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
-		C5F6D38913E223E3009AFA5C /* SongLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongLibraryViewController.h; sourceTree = "<group>"; };
-		C5F6D38A13E223E3009AFA5C /* SongLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongLibraryViewController.m; sourceTree = "<group>"; };
-		C5F6D38B13E223E3009AFA5C /* SongLibraryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongLibraryViewController.xib; sourceTree = "<group>"; };
-		C5F6D38E13E22407009AFA5C /* GMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMManager.h; sourceTree = "<group>"; };
-		C5F6D38F13E22407009AFA5C /* GMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMManager.m; sourceTree = "<group>"; };
-		C5F9EB2C13F1F9AF009D02DE /* GMPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPlaylistItem.h; sourceTree = "<group>"; };
-		C5F9EB2D13F1F9AF009D02DE /* GMPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPlaylistItem.m; sourceTree = "<group>"; };
-		C5FB109813E48ABA008996B0 /* GMSongCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSongCacheViewController.h; sourceTree = "<group>"; };
-		C5FB109A13E48B68008996B0 /* GMSongCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSongCache.h; sourceTree = "<group>"; };
-		C5FB109B13E48B68008996B0 /* GMSongCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSongCache.m; sourceTree = "<group>"; };
-		C5FB109D13E48F04008996B0 /* GMServerSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMServerSync.h; sourceTree = "<group>"; };
-		C5FB109E13E48F04008996B0 /* GMServerSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMServerSync.m; sourceTree = "<group>"; };
-		C5FB10A013E490F3008996B0 /* GMPlaylistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPlaylistManager.h; sourceTree = "<group>"; };
-		C5FB10A113E490F3008996B0 /* GMPlaylistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPlaylistManager.m; sourceTree = "<group>"; };
-		C5FB10BF13E7A2C9008996B0 /* GMAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMAlbum.h; sourceTree = "<group>"; };
-		C5FB10C013E7A2CA008996B0 /* GMAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAlbum.m; sourceTree = "<group>"; };
-		C5FB10C313E7A304008996B0 /* GMArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMArtist.h; sourceTree = "<group>"; };
-		C5FB10C413E7A304008996B0 /* GMArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMArtist.m; sourceTree = "<group>"; };
+		C5F6D38E13E22407009AFA5C /* GMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMManager.h; path = "Google Music Player/GMManager.h"; sourceTree = "<group>"; };
+		C5F6D38F13E22407009AFA5C /* GMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMManager.m; path = "Google Music Player/GMManager.m"; sourceTree = "<group>"; };
+		C5F9EB2C13F1F9AF009D02DE /* GMPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPlaylistItem.h; path = "Google Music Player/GMPlaylistItem.h"; sourceTree = "<group>"; };
+		C5F9EB2D13F1F9AF009D02DE /* GMPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPlaylistItem.m; path = "Google Music Player/GMPlaylistItem.m"; sourceTree = "<group>"; };
+		C5FB109813E48ABA008996B0 /* GMSongCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMSongCacheViewController.h; path = "Google Music Player/GMSongCacheViewController.h"; sourceTree = "<group>"; };
+		C5FB109A13E48B68008996B0 /* GMSongCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMSongCache.h; path = "Google Music Player/GMSongCache.h"; sourceTree = "<group>"; };
+		C5FB109B13E48B68008996B0 /* GMSongCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMSongCache.m; path = "Google Music Player/GMSongCache.m"; sourceTree = "<group>"; };
+		C5FB109D13E48F04008996B0 /* GMServerSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMServerSync.h; path = "Google Music Player/GMServerSync.h"; sourceTree = "<group>"; };
+		C5FB109E13E48F04008996B0 /* GMServerSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMServerSync.m; path = "Google Music Player/GMServerSync.m"; sourceTree = "<group>"; };
+		C5FB10A013E490F3008996B0 /* GMPlaylistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPlaylistManager.h; path = "Google Music Player/GMPlaylistManager.h"; sourceTree = "<group>"; };
+		C5FB10A113E490F3008996B0 /* GMPlaylistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPlaylistManager.m; path = "Google Music Player/GMPlaylistManager.m"; sourceTree = "<group>"; };
+		C5FB10BF13E7A2C9008996B0 /* GMAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMAlbum.h; path = "Google Music Player/GMAlbum.h"; sourceTree = "<group>"; };
+		C5FB10C013E7A2CA008996B0 /* GMAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMAlbum.m; path = "Google Music Player/GMAlbum.m"; sourceTree = "<group>"; };
+		C5FB10C313E7A304008996B0 /* GMArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMArtist.h; path = "Google Music Player/GMArtist.h"; sourceTree = "<group>"; };
+		C5FB10C413E7A304008996B0 /* GMArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMArtist.m; path = "Google Music Player/GMArtist.m"; sourceTree = "<group>"; };
 		C5FB10CA13EC8325008996B0 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		C5FB10CB13EC8325008996B0 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		C5FCB21113EEFECE00A96199 /* ArtistAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistAlbumsViewController.h; sourceTree = "<group>"; };
@@ -201,7 +191,8 @@
 				C578ECDF13E2309600622BD0 /* SBJsonWriter.h */,
 				C578ECE013E2309600622BD0 /* SBJsonWriter.m */,
 			);
-			path = SBJson;
+			name = SBJson;
+			path = "Google Music Player/SBJson";
 			sourceTree = "<group>";
 		};
 		C5F6D35513E221C8009AFA5C = {
@@ -212,6 +203,8 @@
 				C578ED0213E2498500622BD0 /* AVFoundation.framework */,
 				C578ECFB13E2427500622BD0 /* AudioToolbox.framework */,
 				C578ECFC13E2427500622BD0 /* CoreAudio.framework */,
+				C5F9EB3113F5AEDA009D02DE /* External Libraries */,
+				C5F9EB3013F5AE8E009D02DE /* GoogleMusicFramework */,
 				C5F6D36A13E221C8009AFA5C /* Google Music Player */,
 				C5F6D36313E221C8009AFA5C /* Frameworks */,
 				C5F6D36113E221C8009AFA5C /* Products */,
@@ -239,25 +232,86 @@
 		C5F6D36A13E221C8009AFA5C /* Google Music Player */ = {
 			isa = PBXGroup;
 			children = (
-				C578ED0413E2845500622BD0 /* AudioStreamer.h */,
-				C578ED0513E2845600622BD0 /* AudioStreamer.m */,
-				C578ECC613E2309600622BD0 /* SBJson */,
-				C5F6D37313E221C8009AFA5C /* Google_Music_PlayerAppDelegate.h */,
-				C5F6D37413E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m */,
-				C5F6D37613E221C8009AFA5C /* MainWindow.xib */,
-				C5F6D37913E221C8009AFA5C /* RootViewController.h */,
-				C5F6D37A13E221C8009AFA5C /* RootViewController.m */,
-				C5F6D37C13E221C9009AFA5C /* RootViewController.xib */,
+				C5F9EB7B13F5AFE9009D02DE /* Assets */,
+				C5F9EB7C13F5B01B009D02DE /* Interface */,
 				C5F6D36B13E221C8009AFA5C /* Supporting Files */,
-				C5F6D38913E223E3009AFA5C /* SongLibraryViewController.h */,
-				C5F6D38A13E223E3009AFA5C /* SongLibraryViewController.m */,
-				C5F6D38B13E223E3009AFA5C /* SongLibraryViewController.xib */,
+			);
+			path = "Google Music Player";
+			sourceTree = "<group>";
+		};
+		C5F6D36B13E221C8009AFA5C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C5F6D36C13E221C8009AFA5C /* Google Music Player-Info.plist */,
+				C5F6D36D13E221C8009AFA5C /* InfoPlist.strings */,
+				C5F6D37013E221C8009AFA5C /* main.m */,
+				C5F6D37213E221C8009AFA5C /* Google Music Player-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C5F9EB3013F5AE8E009D02DE /* GoogleMusicFramework */ = {
+			isa = PBXGroup;
+			children = (
 				C5F6D38E13E22407009AFA5C /* GMManager.h */,
 				C5F6D38F13E22407009AFA5C /* GMManager.m */,
 				C578ECFF13E2429D00622BD0 /* GMAudioPlayer.h */,
 				C578ED0013E2429D00622BD0 /* GMAudioPlayer.m */,
 				C578ED0B13E2873700622BD0 /* GMSong.h */,
 				C578ED0C13E2873700622BD0 /* GMSong.m */,
+				C5FB109813E48ABA008996B0 /* GMSongCacheViewController.h */,
+				C5FB109A13E48B68008996B0 /* GMSongCache.h */,
+				C5FB109B13E48B68008996B0 /* GMSongCache.m */,
+				C5FB109D13E48F04008996B0 /* GMServerSync.h */,
+				C5FB109E13E48F04008996B0 /* GMServerSync.m */,
+				C5FB10A013E490F3008996B0 /* GMPlaylistManager.h */,
+				C5FB10A113E490F3008996B0 /* GMPlaylistManager.m */,
+				C5FB10BF13E7A2C9008996B0 /* GMAlbum.h */,
+				C5FB10C013E7A2CA008996B0 /* GMAlbum.m */,
+				C5FB10C313E7A304008996B0 /* GMArtist.h */,
+				C5FB10C413E7A304008996B0 /* GMArtist.m */,
+				C5F9EB2C13F1F9AF009D02DE /* GMPlaylistItem.h */,
+				C5F9EB2D13F1F9AF009D02DE /* GMPlaylistItem.m */,
+			);
+			name = GoogleMusicFramework;
+			sourceTree = "<group>";
+		};
+		C5F9EB3113F5AEDA009D02DE /* External Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				C5F9EB3213F5AEEF009D02DE /* AudioStreamer */,
+				C578ECC613E2309600622BD0 /* SBJson */,
+			);
+			name = "External Libraries";
+			sourceTree = "<group>";
+		};
+		C5F9EB3213F5AEEF009D02DE /* AudioStreamer */ = {
+			isa = PBXGroup;
+			children = (
+				C578ED0413E2845500622BD0 /* AudioStreamer.h */,
+				C578ED0513E2845600622BD0 /* AudioStreamer.m */,
+			);
+			name = AudioStreamer;
+			sourceTree = "<group>";
+		};
+		C5F9EB7B13F5AFE9009D02DE /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C5145FFB13E2FDDA00C19FFC /* loginButton-disabled.png */,
+				C5145FFC13E2FDDA00C19FFC /* loginButton-highlighted.png */,
+				C5FB10CA13EC8325008996B0 /* pause.png */,
+				C5FB10CB13EC8325008996B0 /* play.png */,
+				C5145FFD13E2FDDA00C19FFC /* loginButton-normal.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		C5F9EB7C13F5B01B009D02DE /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				C5F6D37313E221C8009AFA5C /* Google_Music_PlayerAppDelegate.h */,
+				C5F6D37413E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m */,
+				C5F6D37613E221C8009AFA5C /* MainWindow.xib */,
 				C5145FE213E28FA900C19FFC /* SongsViewController.h */,
 				C5145FE313E28FA900C19FFC /* SongsViewController.m */,
 				C5145FE413E28FA900C19FFC /* SongsViewController.xib */,
@@ -270,40 +324,11 @@
 				C5145FF213E2FB5A00C19FFC /* LoginViewController.h */,
 				C5145FF313E2FB5A00C19FFC /* LoginViewController.m */,
 				C5145FF413E2FB5B00C19FFC /* LoginViewController.xib */,
-				C5FB109813E48ABA008996B0 /* GMSongCacheViewController.h */,
-				C5FB109A13E48B68008996B0 /* GMSongCache.h */,
-				C5FB109B13E48B68008996B0 /* GMSongCache.m */,
-				C5FB109D13E48F04008996B0 /* GMServerSync.h */,
-				C5FB109E13E48F04008996B0 /* GMServerSync.m */,
-				C5FB10A013E490F3008996B0 /* GMPlaylistManager.h */,
-				C5FB10A113E490F3008996B0 /* GMPlaylistManager.m */,
-				C5FB10BF13E7A2C9008996B0 /* GMAlbum.h */,
-				C5FB10C013E7A2CA008996B0 /* GMAlbum.m */,
-				C5FB10C313E7A304008996B0 /* GMArtist.h */,
-				C5FB10C413E7A304008996B0 /* GMArtist.m */,
 				C5FCB21113EEFECE00A96199 /* ArtistAlbumsViewController.h */,
 				C5FCB21213EEFECE00A96199 /* ArtistAlbumsViewController.m */,
 				C5FCB21313EEFECE00A96199 /* ArtistAlbumsViewController.xib */,
-				C5F9EB2C13F1F9AF009D02DE /* GMPlaylistItem.h */,
-				C5F9EB2D13F1F9AF009D02DE /* GMPlaylistItem.m */,
 			);
-			path = "Google Music Player";
-			sourceTree = "<group>";
-		};
-		C5F6D36B13E221C8009AFA5C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C5145FFB13E2FDDA00C19FFC /* loginButton-disabled.png */,
-				C5145FFC13E2FDDA00C19FFC /* loginButton-highlighted.png */,
-				C5FB10CA13EC8325008996B0 /* pause.png */,
-				C5FB10CB13EC8325008996B0 /* play.png */,
-				C5145FFD13E2FDDA00C19FFC /* loginButton-normal.png */,
-				C5F6D36C13E221C8009AFA5C /* Google Music Player-Info.plist */,
-				C5F6D36D13E221C8009AFA5C /* InfoPlist.strings */,
-				C5F6D37013E221C8009AFA5C /* main.m */,
-				C5F6D37213E221C8009AFA5C /* Google Music Player-Prefix.pch */,
-			);
-			name = "Supporting Files";
+			name = Interface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,8 +383,6 @@
 			files = (
 				C5F6D36F13E221C8009AFA5C /* InfoPlist.strings in Resources */,
 				C5F6D37813E221C8009AFA5C /* MainWindow.xib in Resources */,
-				C5F6D37E13E221C9009AFA5C /* RootViewController.xib in Resources */,
-				C5F6D38D13E223E3009AFA5C /* SongLibraryViewController.xib in Resources */,
 				C5145FE613E28FA900C19FFC /* SongsViewController.xib in Resources */,
 				C5145FEC13E28FB600C19FFC /* ArtistsViewController.xib in Resources */,
 				C5145FF113E28FC400C19FFC /* AlbumsViewController.xib in Resources */,
@@ -382,8 +405,6 @@
 			files = (
 				C5F6D37113E221C8009AFA5C /* main.m in Sources */,
 				C5F6D37513E221C8009AFA5C /* Google_Music_PlayerAppDelegate.m in Sources */,
-				C5F6D37B13E221C8009AFA5C /* RootViewController.m in Sources */,
-				C5F6D38C13E223E3009AFA5C /* SongLibraryViewController.m in Sources */,
 				C5F6D39013E22408009AFA5C /* GMManager.m in Sources */,
 				C578ECE113E2309600622BD0 /* NSObject+SBJson.m in Sources */,
 				C578ECE213E2309600622BD0 /* SBJsonParser.m in Sources */,
@@ -431,14 +452,6 @@
 				C5F6D37713E221C8009AFA5C /* en */,
 			);
 			name = MainWindow.xib;
-			sourceTree = "<group>";
-		};
-		C5F6D37C13E221C9009AFA5C /* RootViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C5F6D37D13E221C9009AFA5C /* en */,
-			);
-			name = RootViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

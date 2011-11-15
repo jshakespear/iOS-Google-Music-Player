@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UITableViewController<UIWebViewDelegate> {
+#import "GoogleSecureAuthentication.h"
+
+@interface LoginViewController : UITableViewController<GoogleSecureAuthenticationDelegate> {
     NSMutableData* responseData;
     
     NSURLConnection* clientLoginConnection;
@@ -17,6 +19,8 @@
     BOOL loginSuccessful;
     
     UIWebView* webView;
+    
+    GoogleSecureAuthentication* googleAuth;
 }
 
 @property (nonatomic, retain) IBOutlet UITableViewCell* usernameCell;

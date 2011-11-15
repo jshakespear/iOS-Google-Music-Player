@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 
 #import "AudioStreamer.h"
 
@@ -35,6 +36,9 @@
 
 @interface GMAudioPlayer : NSObject {
     AudioStreamer* audioStreamer;
+    
+    AVPlayer* player;
+    //AVQueuePlayer* queuePlayer;
     
     id<GMAudioPlayerDelegate> delegate;
 }

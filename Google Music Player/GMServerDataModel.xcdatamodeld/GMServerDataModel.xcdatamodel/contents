@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="562" systemVersion="11A511" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="GMSong">
+        <attribute name="album" optional="YES" attributeType="String"/>
+        <attribute name="albumArtist" optional="YES" attributeType="String"/>
+        <attribute name="albumArtistNorm" optional="YES" attributeType="String"/>
+        <attribute name="albumArtUrl" optional="YES" attributeType="String"/>
+        <attribute name="albumNorm" optional="YES" attributeType="String"/>
+        <attribute name="artist" optional="YES" attributeType="String"/>
+        <attribute name="artistNorm" optional="YES" attributeType="String"/>
+        <attribute name="beatsPerMinute" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="comment" optional="YES" attributeType="String"/>
+        <attribute name="composer" optional="YES" attributeType="String"/>
+        <attribute name="creationDate" optional="YES" attributeType="Integer 64" defaultValueString="0"/>
+        <attribute name="disc" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="durationMillis" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="genre" optional="YES" attributeType="String"/>
+        <attribute name="identifier" optional="YES" attributeType="String"/>
+        <attribute name="lastPlayed" optional="YES" attributeType="Integer 64" defaultValueString="0"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="playCount" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="titleNorm" optional="YES" attributeType="String"/>
+        <attribute name="totalDisc" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="totalTracks" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="track" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="year" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+    </entity>
+    <elements>
+        <element name="GMSong" positionX="160" positionY="192" width="128" height="435"/>
+    </elements>
+</model>

@@ -16,8 +16,14 @@
     GMSongCache* songCache;
     GMAudioPlayer* audioPlayer;
     GMPlaylistManager* playlistManager;
+    
+    NSMutableDictionary* indices;
+    NSMutableDictionary* indicesOrder;
+    NSArray* indicesKeys;
 }
 
+-(void)setupSongSync;
 -(void)syncSongCache;
+-(void)setupIndices;
 
 @end

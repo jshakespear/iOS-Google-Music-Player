@@ -38,6 +38,27 @@
     [super dealloc];
 }
 
+-(void)audioPlayerStartedPlaying
+{
+    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(playlistManagerDidPlayItem:resuming:)])
+    {
+        [self.delegate playlistManagerDidPlayItem:self.currentItem resuming:NO];
+    }
+}
+
+-(void)audioPlayerPaused
+{
+    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(playlistManagerDidPauseItem:)])
+    {
+        [self.delegate playlistManagerDidPauseItem:self.currentItem];
+    }
+}
+
+-(void)audioPlayerFinished
+{
+    
+}
+
 -(void)registerForAudioStreamerStateChanges
 {
     [[NSNotificationCenter defaultCenter] addObserverForName:ASStatusChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification* notification) {
@@ -157,17 +178,62 @@
     item.played = YES;
 }
 
--(void)playNextItem
+-(void)playNextSong
 {
-   /* int i = 0;
-    for(GMPlaylistItem* item in self.items)
+    [self playNextItem];
+}
+
+-(void)playPreviousSong
+{
+    [self playPreviousItem];
+}
+
+-(void)playNextItem
+{    
+    if([self.items count] <= 1)
+        return;
+    
+    int index = [self.items indexOfObject:self.currentItem] + 1;
+    assert(index != NSNotFound);
+    
+    BOOL foundNextItem = NO;
+    
+    NSUInteger numItems = [self.items count];
+    
+    while(index < numItems)
     {
-        NSLog(@"[%i] %@", i++, item.song.title);
-    } */
+        GMPlaylistItem* potentialItem = [self.items objectAtIndex:index];
+        if(!potentialItem.played)
+        {
+            foundNextItem = YES;
+            break;
+        }
+        
+        index++;
+    }
+    
+    if(foundNextItem)
+    {
+        self.currentItem = [self.items objectAtIndex:index]; 
+        [self playItem:self.currentItem];
+    }
+}
+
+-(void)playPreviousItem
+{
+    if([self.items count] <= 1)
+        return;
     
     int index = [self.items indexOfObject:self.currentItem];
     assert(index != NSNotFound);
     
+    if(index == 0)
+        index = [self.items count] - 1;
+    else
+        index--;
+    
+    /* 
+    // TODO: decide if I actually want this for the previous song?
     BOOL foundNextItem = NO;
     
     while(index < [self.items count])
@@ -179,7 +245,7 @@
             foundNextItem = YES;
             break;
         }
-    }
+    } */
     
     self.currentItem = [self.items objectAtIndex:index]; 
     [self playItem:self.currentItem];
@@ -216,20 +282,20 @@
 
 -(void)downloadStreamInfoForSong:(GMSong *)song
 {
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://music.google.com/music/play?songid=%@&pt=e", song.googleMusicId]]];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://music.google.com/music/play?songid=%@&pt=e", song.identifier]]];
     
     NSMutableDictionary* headers = [NSMutableDictionary dictionary];
     
     [headers setValue:@"music.google.com" forKey:@"Host"];
     [headers setValue:@"keep-alive" forKey:@"Connection"];
-    [headers setValue:@"http://music.google.com" forKey:@"Origin"];
+    [headers setValue:@"https://music.google.com" forKey:@"Origin"];
     [headers setValue:@"CGM 0.0.1" forKey:@"User-Agent"];
     [headers setValue:@"application/x-www-form-urlencoded;charset=UTF-8" forKey:@"Content-Type"];
     [headers setValue:@"*/*" forKey:@"Accept"];
     [headers setValue:@"gzip,deflate,sdch" forKey:@"Accept-Encoding"];
     [headers setValue:@"en-US,en;q=0.8" forKey:@"Accept-Language"];
     [headers setValue:@"ISO-8859,utf-8;q=0.7,*;q=0.3" forKey:@"Accept-Charset"];
-    
+    /*
     NSMutableString* cookiesHeader = [NSMutableString string];
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -243,7 +309,7 @@
     }
     
     [headers setValue:cookiesHeader forKey:@"Cookie"];
-    
+     */
     [request setHTTPMethod:@"GET"];
     [request setAllHTTPHeaderFields:headers];
     
@@ -259,6 +325,8 @@
 
 -(void)parseStreamInfo:(NSString *)streamInfo
 {
+    NSLog(@"%@", streamInfo);
+    
     SBJsonParser* parser = [[SBJsonParser alloc] init];
     
     id object = [parser objectWithString:streamInfo];

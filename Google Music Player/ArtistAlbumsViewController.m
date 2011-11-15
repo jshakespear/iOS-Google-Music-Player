@@ -8,6 +8,8 @@
 
 #import "ArtistAlbumsViewController.h"
 
+#include "GMAlbum.h"
+
 #import "SongsViewController.h"
 
 @implementation ArtistAlbumsViewController
@@ -44,7 +46,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.title = self.artist.name;
+    //self.title = self.artist.name;
 }
 
 - (void)viewDidUnload

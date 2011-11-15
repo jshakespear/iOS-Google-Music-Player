@@ -27,7 +27,7 @@
 
 @end
 
-@interface GMPlaylistManager : NSObject {
+@interface GMPlaylistManager : NSObject<GMAudioPlayerDelegate> {
     GMAudioPlayer* audioPlayer;
     
     
@@ -52,7 +52,15 @@
 -(void)playSong:(GMSong*)song;
 -(void)playItem:(GMPlaylistItem*)item;
 
+/*
+ * Why are these here you ask? I dunno, songs/items keeps getting confusing,
+ * they just call the item versions.
+ */
+-(void)playNextSong;
+-(void)playPreviousSong;
+
 -(void)playNextItem;
+-(void)playPreviousItem;
 
 -(BOOL)isFinished;
 

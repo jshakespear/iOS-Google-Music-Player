@@ -29,7 +29,7 @@
 
 -(void)dealloc
 {
-    [webView release];
+  //  [webView release];
     
     [super dealloc];
 }
@@ -44,7 +44,7 @@
 
 -(IBAction)loginButtonPressed:(id)sender
 {
-    [self sendGoogleLoginRequest];
+  //  [self sendGoogleLoginRequest];
   
     
    // [webView 
@@ -53,8 +53,29 @@
     
    // [self.view addSubview:webView];
     
+    googleAuth = [[GoogleSecureAuthentication alloc] initWithUsername:self.usernameField.text password:self.passwordField.text];
+    googleAuth.delegate = self;
+    
+    [googleAuth authenticate];
+    
     [self.usernameField resignFirstResponder];
     [self.passwordField resignFirstResponder];
+}
+
+-(void)authenticationSucceeded:(GoogleSecureAuthentication *)auth sessionToken:(NSString *)sessionToken
+{
+    NSLog(@"Token: %@", sessionToken);
+    
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"You are now logged in." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
+-(void)authenticationFailed:(GoogleSecureAuthentication *)auth error:(NSError *)error
+{
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to log in." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 -(void)sendGoogleLoginRequest
@@ -62,15 +83,18 @@
     NSString* username = self.usernameField.text;
     NSString* password = self.passwordField.text;
     
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://www.google.com/accounts/ServiceLoginAuth"]];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://accounts.google.com/ServiceLoginAuth"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
 
     NSString* galx = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByName('GALX').item(0).value"];
-    NSLog(@"%@", galx);
+    NSLog(@"GALX: %@", galx);
     
-    NSString* body = [[NSString alloc] initWithFormat:@"Email=%@&Passwd=%@&GALX=%@&continue=http://music.google.com/",username, password, galx];
+    NSString* dsh = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByName('dsh').item(0).value"];
+    NSLog(@"DSH: %@", dsh);
+    
+    NSString* body = [[NSString alloc] initWithFormat:@"Email=%@&Passwd=%@&dsh=%@&GALX=%@&continue=https://music.google.com/music/listen&followup=https://music.google.com/music/listen&dnConn=https://accounts.youtube.com",username, password, dsh, galx];
     [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
     [body release];
     
@@ -101,6 +125,28 @@
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:dictionary forKey:@"GMCookies"];
     [defaults synchronize];
+}
+/*
+- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+{
+    return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{    
+    [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
+}*/
+
+- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse
+{
+    if(connection == musicTestConnection)
+    {
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)redirectResponse;
+        NSLog(@"Redirect Status: %i", httpResponse.statusCode);
+        NSLog(@"Redirect URL: %@", httpResponse.URL);
+    }
+    
+    return request;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -151,7 +197,7 @@
     {
        // if(loginSuccessful)
        // {
-            musicTestConnection = [NSURLConnection connectionWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://music.google.com/music/listen"]] delegate:self];
+            musicTestConnection = [NSURLConnection connectionWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://music.google.com/music/listen"]] delegate:self];
             
             [responseData release];
             responseData = [[NSMutableData alloc] init];
@@ -231,9 +277,9 @@
     
     [self.usernameField becomeFirstResponder];
     
-    webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    [webView setDelegate:self];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.google.com/accounts/ServiceLogin?service=sj"]]];
+   // webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+   // [webView setDelegate:self];
+   // [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.google.com/accounts/ServiceLogin?service=sj"]]];
     
     loginSuccessful = NO;
 }
@@ -375,6 +421,10 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    if(indexPath.section == 1 && indexPath.row == 0)
+    {
+        [self loginButtonPressed:nil];
+    }
 }
 
 @end

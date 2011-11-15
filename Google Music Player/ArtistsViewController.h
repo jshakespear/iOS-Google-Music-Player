@@ -13,6 +13,8 @@
 #import "GMPlaylistManager.h"
 #import "GMAudioPlayer.h"
 
+@class ArtistTableViewCell;
+
 @interface ArtistsViewController : UITableViewController<GMSongCacheViewController> {
     GMSongCache* songCache;
     GMAudioPlayer* audioPlayer;
@@ -22,6 +24,8 @@
     NSMutableDictionary* indicesOrder;
     NSArray* indicesKeys;
 }
+
+@property (nonatomic, retain) IBOutlet ArtistTableViewCell* artistCell;
 
 -(void)setupSongSync;
 

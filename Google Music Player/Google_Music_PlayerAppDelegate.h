@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+
+#import <RestKit/RestKit.h>
 
 #import "GMManager.h"
 
@@ -14,7 +17,7 @@
 #import "GMAudioPlayer.h"
 #import "GMPlaylistManager.h"
 
-@interface Google_Music_PlayerAppDelegate : NSObject <UIApplicationDelegate, UITabBarDelegate, GMPlaylistManagerDelegate> {
+@interface Google_Music_PlayerAppDelegate : NSObject <UIApplicationDelegate, UITabBarDelegate, GMPlaylistManagerDelegate, MFMailComposeViewControllerDelegate> {
     GMManager* googleMusicManager;
     
     GMSongCache* songCache;
@@ -33,8 +36,19 @@
 @property (nonatomic, retain) IBOutlet UIButton* playPauseButton;
 @property (nonatomic, retain) IBOutlet UIButton* playlistViewToggleButton;
 
+@property (nonatomic, retain) IBOutlet UILabel* songLabel;
+@property (nonatomic, retain) IBOutlet UILabel* albumLabel;
+@property (nonatomic, retain) IBOutlet UILabel* artistLabel;
+
 -(IBAction)togglePlaylistViewVisible;
 
 -(IBAction)togglePlayPause;
+
+-(IBAction)previousSong;
+-(IBAction)nextSong;
+
+-(void)adjustViewControllerForPlaylistView:(UIViewController*)viewController;
+
+-(void)setupRestKit;
 
 @end

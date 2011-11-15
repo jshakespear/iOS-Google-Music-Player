@@ -9,11 +9,16 @@
 #import "ArtistsViewController.h"
 
 #import "GMSong.h"
+#import "GMAlbum.h"
+#import "GMArtist.h"
 #import "GMServerSync.h"
 
 #import "ArtistAlbumsViewController.h"
+#import "ArtistTableViewCell.h"
 
 @implementation ArtistsViewController
+
+@synthesize artistCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -79,6 +84,7 @@
     
   //  int count = [songCache.artists count];
     
+    
     for(GMArtist* artist in songCache.artists)
     {
         if([artist.name isEqualToString:@""])
@@ -93,7 +99,7 @@
         }
         
         [artistsForKey addObject:[NSNumber numberWithInt:[songCache.artists indexOfObject:artist]]];
-    }
+    } 
     
     // Now order the keys
     
@@ -137,6 +143,9 @@
     UIBarButtonItem* button = [[UIBarButtonItem alloc] initWithTitle:@"Sync" style:UIBarButtonItemStylePlain target:self action:@selector(syncSongCache)];
     self.navigationItem.rightBarButtonItem = button;
     [button release];
+    
+  //  artistCell = [[ArtistTableViewCell alloc] init];
+   // [[NSBundle mainBundle] loadNibNamed:@"ArtistL owner:<#(id)#> options:<#(NSDictionary *)#>
 }
 
 - (void)viewDidUnload
@@ -164,6 +173,15 @@
     return index;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(artistCell != nil)
+    {
+        return artistCell.frame.size.height;
+    }
+    
+    return 164.0f;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -189,9 +207,14 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ArtistTableViewCell *cell = (ArtistTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        //cell = [[ArtistTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+        [[NSBundle mainBundle] loadNibNamed:@"ArtistTableViewCell" owner:self options:nil];
+        
+        cell = self.artistCell;
+        self.artistCell = nil;
     }
     
     // Configure the cell...
@@ -203,10 +226,16 @@
         GMArtist* artist = [songCache.artists objectAtIndex:index];
         
         int numAlbums = [artist.albums count];
-        [cell.textLabel setText:artist.name];
+        [cell.artistName setText:artist.name];
         
         NSString* mod = numAlbums > 1 ? @"s" : @"";
-        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%i album%@", numAlbums, mod]];
+        [cell.songCount setText:[NSString stringWithFormat:@"%i album%@", numAlbums, mod]];
+        
+        GMAlbum* firstAlbum = [artist.albums objectAtIndex:0];
+        if(firstAlbum.coverArt != nil)
+        {
+            [cell.coverArt setImage:firstAlbum.coverArt];
+        }
         
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }

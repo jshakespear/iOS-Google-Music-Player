@@ -227,6 +227,20 @@
         
         [cell.textLabel setText:song.title];
         [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@ - %@", song.artist, song.album]];
+    
+        GMAlbum* album = [songCache albumForSong:song];
+        if(!album)
+            //NSLog(@"Album was nil.");
+        
+        if(album != nil && album.coverArt != nil)
+        {
+            //NSLog(@"Not art for: %@", song.title);
+            [cell.imageView setImage:album.coverArt];
+        }
+        else
+        {
+            [cell.imageView setImage:nil];
+        }
     }
     
     return cell;

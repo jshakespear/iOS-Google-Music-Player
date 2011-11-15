@@ -17,6 +17,6 @@
 
 @property (nonatomic, assign) GMPlaylistManager* playlistManager;
 
-@property (nonatomic, retain) GMArtist* artist;
+@property (nonatomic, assign) GMArtist* artist;
 
 @end

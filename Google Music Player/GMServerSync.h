@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import <RestKit/RestKit.h>
+
+#import "GMSong.h"
 #import "GMSongCache.h"
 
 /*
@@ -23,27 +26,14 @@
  */
 
 #define kGMServerSyncFinishedNotification (@"kGMServerSyncFinishedNotification")
+#define kGMServerSyncFailedNotification (@"kGMServerSyncFailedNotification")
 
-@interface GMServerSync : NSObject {
+@interface GMServerSync : NSObject<RKObjectLoaderDelegate> {
     GMSongCache* songCache;
-    
-    NSMutableData* responseData;
-    
-    NSDate* downloadStartTime;
-    NSDate* downloadEndTime;
-    NSDate* parseStartTime;
-    NSDate* parseEndTime;
 }
 
 @property (nonatomic, assign) GMSongCache* songCache;
 
 -(void)synchronize;
-
--(void)parseData;
-
--(NSArray*)sortSongsAlphabetically:(NSArray*)unorderedSongs;
--(NSArray*)sortArtistsAlphabetically:(NSArray*)unorderedArtists;
-
--(void)sort;
 
 @end
